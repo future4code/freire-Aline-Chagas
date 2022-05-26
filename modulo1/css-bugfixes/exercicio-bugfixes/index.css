@@ -92,7 +92,8 @@ td button:hover{
 }
 
 #container-de-descricao>ol {
-    padding: 15px 0px;
+    padding: 15px 520px;
+    text-align: center;
 }
 
 #container-para-comprar {
