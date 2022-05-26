@@ -41,6 +41,7 @@ div img {
     background: white;
 }
 
+
 td button:hover{
     background-color: orangered;
 }
@@ -80,6 +81,8 @@ td button:hover{
     color: white;
     padding-top: 50px;
     text-align: center;
+    list-style-type: decimal;
+    
 }
 #container-de-descricao>p {
     display: block;
@@ -101,8 +104,6 @@ td button:hover{
     padding: 100px 0;
     font-size: 60px;
 }
-
-
 /**
   *
   *  ESTILOS COMPRAR 
@@ -137,6 +138,14 @@ td button {
     height: 100px;
 }
 
+.container-do-search img:hover{
+ opacity: 50%;
+}
+
+.container-do-search img{
+    width: 15px;
+    height: 15px;
+   }
 
 #back-button {
     background-color: white;
