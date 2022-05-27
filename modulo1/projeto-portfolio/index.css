@@ -1,0 +1,46 @@
+
+body{
+    background-color: honeydew;   
+}
+
+h1{
+    color:black;
+    font-style: italic;
+    font-size: 30px;
+    text-align: center;
+    text-transform: initial;
+}
+
+nav{
+    text-align: center;
+}
+
+textarea{
+    width:200px;
+    height: 100px;
+    box-sizing: border-box;
+    border: 1px solid grey;
+}
+h2 p{
+    text-align: center;
+    font-size: 30px;
+}
+
+.flex{
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    font-size: 40px;
+}
+
+div img{
+    width: 500px;
+    margin: 0 10px;
+    image-orientation: from-image;
+}
+p {
+    text-align: center;
+    font-size: 25px;
+
+}
+
