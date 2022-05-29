@@ -1,4 +1,8 @@
-
+*{
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+}
 body{
     background-color: honeydew;   
 }
@@ -11,8 +15,31 @@ h1{
     text-transform: initial;
 }
 
-nav{
+#mainNav{
     text-align: center;
+}
+#mainNav a{
+    color: black;
+    display: inline-block;
+    width: 18%;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#mainNav a:hover{
+    text-decoration: underline;
+}
+
+#mainImg{
+    width: 10%;
+    height: 20%;
+    float: left;
+    margin: 0 30px 0;
+    border: 2px solid black;
+}
+hr.clear{
+    clear: both;
+    border: 0;
 }
 
 textarea{
@@ -41,6 +68,34 @@ div img{
 p {
     text-align: center;
     font-size: 25px;
-
+    font-family: Helvetica;
 }
 
+#home p{
+    text-align: left;
+    font-size: 22px;
+}
+
+#portifolioTable{
+    margin: 0 20px auto;
+}
+#portifolioTable th p{
+    font-size: 18px;
+    text-align: center;
+    padding: 5px 0 10px;
+}
+#portifolioTable td p{
+    font-size: 18px;
+    text-align: left;
+    padding: 5px 10px;
+}
+#portifolioTable tr:first-of-type{
+    background-color: #888;
+}
+#portifolioTable tr:nth-child(even){
+    background-color: #ccc;
+}
+#formContato{
+    width: 50%;
+    margin-left: 100px;
+}
