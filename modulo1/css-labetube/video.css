@@ -32,8 +32,17 @@ header input{
 text-align: center;
 }
 
+video{
+    display: grid;
+    object-position: center;
+    max-height: 95%;
+    max-width: 85%;
+
+}
+
 .voltar{
     display: grid;
+    align-self: flex-start;
     width: 150px;
     padding: 8px 16px;
     background-color: coral;
@@ -42,8 +51,6 @@ text-align: center;
     border-radius: 4px;
 
 }
-
-
 footer{
     bottom: 0;
     position: fixed;
