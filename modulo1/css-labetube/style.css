@@ -53,3 +53,8 @@ footer{
     width: 100%; 
     text-align: center;
 }
+
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    
+  
+    }
