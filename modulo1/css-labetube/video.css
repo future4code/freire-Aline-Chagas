@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-style: italic;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 a{
@@ -32,6 +34,7 @@ header input{
     align-items: center;
     max-width: 100vw;
     object-fit: contain;
+    justify-items: center;
 }
 
 .Reprodutor h2{
@@ -43,8 +46,6 @@ video{
     object-position: center;
     max-height: 95%;
     max-width: 85%;
-    padding-left: 60px;
-    
 
 }
 
@@ -64,7 +65,19 @@ footer{
     position: fixed;
     display: flex;
     justify-content: space-around;
-    background-color: mediumvioletred;
+    background-color: aqua;
     width: 100%; 
     text-align: center;
 }
+
+@media (max-width:800px){
+    video {
+        grid-template-columns: 1fr 1fr;
+    }
+   }
+   
+   @media(max-width:500px){
+       video {
+           grid-template-columns: 1fr;
+       }
+   }

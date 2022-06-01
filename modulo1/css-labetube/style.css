@@ -1,5 +1,7 @@
 *{
     margin: 0;
+    font-style: italic;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 a{
@@ -49,12 +51,22 @@ footer{
     position: fixed;
     display: flex;
     justify-content: space-around;
-    background-color: mediumvioletred;
+    background-color: aqua;
     width: 100%; 
     text-align: center;
 }
 
-@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    
-  
+@media (max-width:800px){
+ nav {
+     grid-template-columns: 1fr 1fr;
+ }
+}
+
+@media(max-width:500px){
+    nav{
+        grid-template-columns: 1fr;
     }
+}
+
+
+      
