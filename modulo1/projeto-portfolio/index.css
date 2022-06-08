@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+}
+body{
+    background-color: honeydew;   
+}
+
+h1{
+    color:black;
+    font-style: italic;
+    font-size: 30px;
+    text-align: center;
+    text-transform: initial;
+}
+
+#mainNav{
+    text-align: center;
+}
+#mainNav a{
+    color: black;
+    display: inline-block;
+    width: 18%;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#mainNav a:hover{
+    text-decoration: underline;
+}
+
+#mainImg{
+    width: 10%;
+    height: 20%;
+    float: left;
+    margin: 0 30px 0;
+    border: 2px solid black;
+}
+hr.clear{
+    clear: both;
+    border: 0;
+}
+
+textarea{
+    width:200px;
+    height: 100px;
+    box-sizing: border-box;
+    border: 1px solid grey;
+}
+h2 p{
+    text-align: center;
+    font-size: 30px;
+}
+
+.flex{
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    font-size: 40px;
+}
+
+div img{
+    width: 500px;
+    margin: 0 10px;
+    image-orientation: from-image;
+}
+p {
+    text-align: center;
+    font-size: 25px;
+    font-family: Helvetica;
+}
+
+#home p{
+    text-align: left;
+    font-size: 22px;
+}
+
+#portifolioTable{
+    margin: 0 20px auto;
+}
+#portifolioTable th p{
+    font-size: 18px;
+    text-align: center;
+    padding: 5px 0 10px;
+}
+#portifolioTable td p{
+    font-size: 18px;
+    text-align: left;
+    padding: 5px 10px;
+}
+#portifolioTable tr:first-of-type{
+    background-color: #888;
+}
+#portifolioTable tr:nth-child(even){
+    background-color: #ccc;
+}
+#formContato{
+    width: 50%;
+    margin-left: 100px;
+}
