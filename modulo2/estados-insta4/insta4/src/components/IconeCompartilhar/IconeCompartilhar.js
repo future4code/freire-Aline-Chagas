@@ -1,12 +1,15 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
 
-const Compartilhar = styled.div`
+const CommentContainer = styled.div`
     display: flex;
     justify-content: center;
     padding: 5px;
 `
-const CompartilharImg= styled.img`
+
+const InputComentario = styled.input`
+    width: 100%;
+    margin-right: 5px;
 `
 
 export class SecaoComentario extends Component {
@@ -14,17 +17,19 @@ export class SecaoComentario extends Component {
     comentario: ""
 	}
 
-	onChangeCompartilhar=(event) => {
+	onChangeComentario=(event) => {
 		this.setState({comentario: event.target.value})
 
 	}
 
 	render() {
-		return <Compartilhar>
-			<img  />
-		
-
+		return <CommentContainer>
+			<InputComentario
+				placeholder={'Comentário'}
+				value={this.state.comentario}
+				onChange={this.onChangeComentario}
+			/>
 			<button onClick={this.props.aoEnviar}>Enviar</button>
-		</Compartilhar>
+		</CommentContainer>
 	}
 }

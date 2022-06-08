@@ -2,14 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 
 import {IconeComContador} from '../IconeComContador/IconeComContador'
-
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 import iconeSalvarBranco from '../../img/salvar-white.png'
 import iconeSalvarPreto from '../../img/salvar-black.png'
-import iconeCompartilhar from '../../img/enviar.png'
+
 
 const PostContainer = styled.div`
   border: 1px solid gray;
@@ -50,8 +49,7 @@ class Post extends React.Component {
     comentando: false,
     numeroComentarios: 0,
     salvar: false,
-    compartilhar: false,
-
+  
   }
 
   onClickCurtida = () => {
@@ -76,18 +74,7 @@ class Post extends React.Component {
     
   }
 
-  // onClickCompartilhar = () => {
-    
-  //   if (this.state.compartilhar!== false){
-  //     this.setState({compartilhar:false})
-  
-  //   }else if{
-  //     this.setState({compartilhar:true})
-  //   }else{
-    
-  //   }
-    
-  // }
+
 
   onClickComentario = () => {
     this.setState({
@@ -119,14 +106,7 @@ class Post extends React.Component {
       iconeSalvar = iconeSalvarBranco
     }
 
-    // let iconeCompartilhar
-
-    // if(this.state.compartilhar) {
-    //   iconeSalvar = iconeSalvarPreto
-    // } else {
-    //   iconeSalvar = iconeSalvarBranco
-    // }
-
+  
     let componenteComentario
 
     if(this.state.comentando) {
@@ -154,14 +134,12 @@ class Post extends React.Component {
           valorContador={this.state.numeroComentarios}
         />
 
+          
          <IconeComContador
-          icone={iconeCompartilhar}
-          onClickIcone={this.onClickCompartilhar} 
-        />
-          <iconeCompartilhar
           icone={iconeSalvar}
           onClickIcone={this.onClickSalvar} 
         />
+         
 
       </PostFooter>
       {componenteComentario}
