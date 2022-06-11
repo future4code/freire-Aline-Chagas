@@ -1,38 +1,47 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: antiquewhite;
-  min-height: 100vh;
+.Div-Main{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: black;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+
+.Mensagem-enviada{
+  background-image: url(../src/img/background.png);
+  background-size: contain;
+  padding: 30px;
+  width: 60vw;
+  min-height: 50vh;
+  border-radius: 5px;
+  border: 1px solid black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Container-mensagem{
+  display:flex;
+  border:1px solid black;
+  border-radius: 5px;
+  background-color: lightgrey;
+
 }
+
+.Container-mensagem input {
+  align-self: center;
+  border-color: black;
+
+}
+
+.Container-mensagem img{
+  width: 10px;
+  height: 10px;
+
+}
+.balaoMsg{
+  background-color: #d8fdd2;
+  width: fit-content;
+  padding: 5px;
+  margin-bottom: 3px;
+
+
+}
+
+

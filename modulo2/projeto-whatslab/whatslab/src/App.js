@@ -1,61 +1,75 @@
 import React from 'react';
 import './App.css';
+import Enviar from './img/aviao-de-papel.png'
 
-export default App;
+class App extends React.Component {
 
-//     state = {
-//     mensagem: [
-//     {valorInputNome:"",
-//     valorInputMensagem:"",
-//     }
-//   ] 
-// }
+  state = {
+    mensagem: [],
+    valorInputNome: "",
+    valorInputMensagem: ""
+  }
 
-// adicionaMensagem = () => {
+  adicionaMensagem = () => {
+    const novaMensagem = {
+      nome: this.state.valorInputNome,
+      mensagem: this.state.valorInputMensagem,
+    };
 
-//   const novaMensagem = {
-
-//     nome: this.state.valorInputNome,
-
-//     mensagem: this.state.valorInputMensagem,
-
-//   };
-
-// };
-
-// onChangeInputNomeUsuario = (event) => {
-
-//   this.setState({ valorInputNome: event.target.value });
-// };
-
-// onChangeInputMensagem = (event) => {
-
-//   this.setState({ valorInputMensagem: event.target.value });
-// };
+    const novoMensagem = [...this.state.mensagem, novaMensagem];
+    this.setState({ mensagem: novoMensagem });
+    this.setState({ valorInputNome: '' });
+    this.setState({ valorInputMensagem: '' });
+  };
 
 
-// render(){
-
-//   return ( 
-//     <div>
-//         <input
-//           value={this.state.valorInputUsuario}
-//           onChange={this.onChangeInputUsuario}
-//           placeholder={"Usuário"}
-//         />
-
-//         <input
-//           value={this.state.valorInputMensagem}
-//           onChange={this.onChangeInputMensagem}
-//           placeholder={"Mensagem"}
-//         />
-//         <button onClick={this.adicionaMensagem}>Enviar</button>
-//         </div>
-//         )
-// }
+  onChangeInputNomeUsuario = (event) => {
+    this.setState({ valorInputNome: event.target.value });
+  };
 
 
-<form>
+  onChangeInputMensagem = (event) => {
+    this.setState({ valorInputMensagem: event.target.value });
+  };
+
+
+  render() {
+    const mensagemEnviada = this.state.mensagem.map((mensagem) => {
+      return (
+        <div className='balaoMsg'>
+<strong>{mensagem.nome}:</strong>  {mensagem.mensagem}
+        </div>
+      )
+    })
+    return (
+      <div className='Div-Main'>
+        <div className='Mensagem-enviada'>
+        {mensagemEnviada}
+        </div>
+
+
+        <div className='Container-mensagem'>
+          <input
+            value={this.state.valorInputNome}
+            onChange={this.onChangeInputNomeUsuario}
+            placeholder={"Usuário"}
+          />
+
+          <input
+            value={this.state.valorInputMensagem}
+            onChange={this.onChangeInputMensagem}
+            placeholder={"Mensagem"}
+          />
+          <button onClick={this.adicionaMensagem}><img src={Enviar}alt='Enviar'/></button>
+        </div>
+      </div>
+
+    )
+  }
+}
+
+
+/* <form>
   <label>
     <input type="text" name="nome" />
   </label>
@@ -63,7 +77,7 @@ export default App;
     <input type="text" value="mensagem" />
     <button>enviar</button>
   </label>
-</form>
+</form> */
 
-
+export default App;
 
