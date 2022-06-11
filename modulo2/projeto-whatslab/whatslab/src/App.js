@@ -16,9 +16,10 @@ class App extends React.Component {
       mensagem: this.state.valorInputMensagem,
     };
 
+    if (!novaMensagem.mensagem) return;
+
     const novoMensagem = [...this.state.mensagem, novaMensagem];
     this.setState({ mensagem: novoMensagem });
-    this.setState({ valorInputNome: '' });
     this.setState({ valorInputMensagem: '' });
   };
 
@@ -32,19 +33,25 @@ class App extends React.Component {
     this.setState({ valorInputMensagem: event.target.value });
   };
 
+  sendOnEnter = (event) => {
+    if (event.key === 'Enter') {
+      this.adicionaMensagem()
+    }
+  };
+
 
   render() {
     const mensagemEnviada = this.state.mensagem.map((mensagem) => {
       return (
         <div className='balaoMsg'>
-<strong>{mensagem.nome}:</strong>  {mensagem.mensagem}
+          <strong>{mensagem.nome}:</strong>  {mensagem.mensagem}
         </div>
       )
     })
     return (
       <div className='Div-Main'>
         <div className='Mensagem-enviada'>
-        {mensagemEnviada}
+          {mensagemEnviada}
         </div>
 
 
@@ -58,9 +65,10 @@ class App extends React.Component {
           <input
             value={this.state.valorInputMensagem}
             onChange={this.onChangeInputMensagem}
+            onKeyDown={this.sendOnEnter}
             placeholder={"Mensagem"}
           />
-          <button onClick={this.adicionaMensagem}><img src={Enviar}alt='Enviar'/></button>
+          <button onClick={this.adicionaMensagem}><img src={Enviar} alt='Enviar' /></button>
         </div>
       </div>
 
