@@ -1,19 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import './App.css'
 import Etapa1 from './Components/Etapa1'
 import Etapa2 from './Components/Etapa2'
 import Etapa3 from './Components/Etapa3'
 import Final from './Components/Final'
-
-const Home = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 600px;
-  margin: 0px auto;
-  align-content: center;
-  text-align: center;
-`
-
 export default class App extends React.Component {
 
   state = {
@@ -49,13 +39,14 @@ export default class App extends React.Component {
   render() {
     return (
 
-      <Home>
+      <div>
 
         {this.renderizaEtapa()}
 
-        {this.state.etapa < 4 ? <button onClick={this.proximaEtapa}>Próxima Etapa</button> : ""}
-        
-      </Home>
+       {this.state.etapa <4 ? <button onClick={this.proximaEtapa}>Próxima Etapa</button> : ""}
+ 
+
+      </div>
 
     )
   }
