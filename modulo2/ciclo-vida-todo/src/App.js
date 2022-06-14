@@ -20,13 +20,20 @@ const InputsContainer = styled.div`
 
 class App extends React.Component {
     state = {
-      tarefas: [],
+      tarefas: [
+        { id: Date.now(),
+          texto: 'lavar louça',
+          completa: false
+        }
+      ],
       inputValue: '',
       filtro: ''
     }
 
   componentDidUpdate() {
-    const tarefas = this.state.tarefas
+    const tarefas1 = this.state.tarefas
+    const tarefaString = JSON.stringify(tarefas1)
+    localStorage.setItem('tarefas', tarefaString)
   };
 
   componentDidMount() {
@@ -74,11 +81,11 @@ this.setState({tarefas:novaListaDeTarefas})
   }
 
   onChangeFilter = (event) => {
-  this.setState({option: event.target.value})
+  this.setState({filtro: event.target.value})
   }
 
   render() {
-    const listaFiltrada = this.state.tarefas.filter(tarefa => {
+    const listaFiltrada = this.state.tarefas.filter((tarefa) => {
       switch (this.state.filtro) {
         case 'pendentes':
           return !tarefa.completa
@@ -88,6 +95,7 @@ this.setState({tarefas:novaListaDeTarefas})
           return true
       }
     })
+  
 
     return (
       <div className="App">
