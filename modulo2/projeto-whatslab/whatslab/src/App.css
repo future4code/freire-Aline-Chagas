@@ -1,0 +1,60 @@
+.Div-Main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.Mensagem-enviada {
+  margin-top: 50px;
+  background-image: url(../src/img/background.png);
+  background-size: contain;
+  padding: 30px;
+  width: 60vw;
+  min-height: 50vh;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border: 1px solid black;
+  
+}
+
+.Container-mensagem {
+  display: flex;
+  border: 1px solid black;
+  background-color: rgba(211, 211, 211, 0.6);
+  width: 60vw;
+  padding: 10px 30px; 
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius: 5px;
+  
+  
+
+}
+
+.Container-mensagem input {
+  background-color: white;
+  justify-content: space-between;
+  margin-right: 8px;
+  border: 0;
+  padding: 8px 4px;
+  width: 48%;
+}
+.Container-mensagem button {
+  border: 0;
+}
+
+
+.Container-mensagem img {
+  width: 20px;
+  height: 20px;
+}
+
+.balaoMsg {
+  background-color: #d8fdd2;
+  width: fit-content;
+  padding: 5px;
+  margin-bottom: 3px;
+
+
+}
