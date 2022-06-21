@@ -26,19 +26,20 @@ export default class ListaUser extends React.Component {
 
   }
   deleteUsers = (id) => {
+    if (window.confirm("Deseja deletar?")){
     axios.delete(
       `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`,
-     
+
       {
         headers: {
           Authorization: "aline-chagas-freire"
         }
       }
     ).then((response) => {
-      alert("Usuário excluído")
+      alert("Usuário Excluído")
       this.getAllUsers()
     });
-
+  }
   }
 
 
