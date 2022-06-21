@@ -1,11 +1,15 @@
 import React from 'react';
 import axios from 'axios';
+import ListaUser from './components/ListaUser';
 import './App.css';
+
+
 
 export default class App extends React.Component {
   state = {
     inputName: "",
-    inputEmail: ""
+    inputEmail: "",
+    trocarPagina: true
   }
   onChangeInputName = (event) => {
     this.setState({ inputName: event.target.value });
@@ -34,24 +38,24 @@ export default class App extends React.Component {
     request
       .then((response) => {
         console.log(response.data);
-        alert("foi")
+        alert("Usuário cadastrado com sucesso!")
 
       })
       .catch((error) => {
         console.log(error.message);
+        alert("Usuário não foi cadastrado")
 
       });
   };
-
-  componentDidMount = () => {
-    this.createUser();
-  };
+  botaoTrocar= () => {
+    this.setState({trocarPagina: !this.state.trocarPagina})
+  }
 
   render() {
-    return (
-      <section>
-        <button>Trocar de tela</button>
-        <label>Novo Usuário </label>
+    const Renderizar = () => {
+      if (this.state.trocarPagina){
+        return (<div> 
+          <label>Novo Usuário </label>
         <input
           value={this.state.inputName}
           onChange={this.onChangeInputName}
@@ -62,7 +66,16 @@ export default class App extends React.Component {
           onChange={this.onChangeInputEmail}
           placeholder="e-mail"
         />
-        <button onClick={this.createUser}>Cria Usuário</button>
+        <button onClick={this.createUser}>Cria Usuário</button></div>)
+      }else{
+        return <ListaUser/>
+      }
+    }
+    return (
+      <section>
+        <button onClick={this.botaoTrocar}>Trocar de tela</button>
+        <Renderizar/>
+       
       </section>
     );
   }

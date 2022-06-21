@@ -3,32 +3,41 @@ import axios from 'axios';
 
 
 export default class ListaUser extends React.Component {
-    state={
+  state = {
+    listaUsuario: []
+  }
+  
+  componentDidMount() {
+    this.getAllUsers()
+  }
 
-    }
-
-    const request = axios.get(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",
-        body,
-        {
-          headers: {
-            Authorization: "aline-chagas-freire"
-          }
+  getAllUsers = () => {
+    axios.get(
+      "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",
+     
+      {
+        headers: {
+          Authorization: "aline-chagas-freire"
         }
-      );
-  
-      request
-        .then((response) => {
-          {this.response.data};
-          alert("Usuário cadastrado com sucesso")
-  
-        })
-        .catch((error) => {
-          console.log(error.message);
-  
-        });
-    };
-  
-    componentDidMount = () => {
-      this.createUser();
-    };
+      }
+    ).then((response) => {
+      this.setState({ listaUsuario: response.data })
+    });
+
+  }
+
+  render() {
+    const listaUser = this.state.listaUsuario.map(usuario => {
+      return (<div key={usuario.id}>
+        <p>{usuario.name}</p>
+      </div>)
+    })
+    return (
+      <div>{listaUser}</div>
+    )
+
+  }
+
+
+
+};
