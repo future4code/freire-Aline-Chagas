@@ -6,7 +6,7 @@ export default class ListaUser extends React.Component {
   state = {
     listaUsuario: []
   }
-  
+
   componentDidMount() {
     this.getAllUsers()
   }
@@ -25,11 +25,28 @@ export default class ListaUser extends React.Component {
     });
 
   }
+  deleteUsers = (id) => {
+    axios.delete(
+      `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`,
+     
+      {
+        headers: {
+          Authorization: "aline-chagas-freire"
+        }
+      }
+    ).then((response) => {
+      alert("Usuário excluído")
+      this.getAllUsers()
+    });
+
+  }
+
 
   render() {
     const listaUser = this.state.listaUsuario.map(usuario => {
       return (<div key={usuario.id}>
         <p>{usuario.name}</p>
+        <button onClick={()=> this.deleteUsers(usuario.id)}>deletar</button>
       </div>)
     })
     return (
