@@ -1,8 +1,19 @@
 import React from 'react';
 import axios from 'axios';
 import ListaUser from './components/ListaUser';
-import './App.css';
+import styled from 'styled-components';
 
+const Cadastro = styled.div`
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    justify-items: center;
+
+`
 export default class App extends React.Component {
   state = {
     inputName: "",
@@ -37,6 +48,7 @@ export default class App extends React.Component {
       .then((response) => {
         console.log(response.data);
         alert("Usuário cadastrado com sucesso!")
+        this.setState({inputName:"", inputEmail:""})
 
       })
       .catch((error) => {
@@ -44,16 +56,15 @@ export default class App extends React.Component {
         alert("Usuário não foi cadastrado")
 
       });
+     
   };
-  botaoTrocar= () => {
-    this.setState({trocarPagina: !this.state.trocarPagina})
+  botaoTrocar = () => {
+    this.setState({ trocarPagina: !this.state.trocarPagina })
   }
-
-  render() {
-    const Renderizar = () => {
-      if (this.state.trocarPagina){
-        return (<div> 
-          <label>Novo Usuário </label>
+  Renderizar = () => {
+     
+      return (<Cadastro>
+        <label>Novo Usuário </label>
         <input
           value={this.state.inputName}
           onChange={this.onChangeInputName}
@@ -64,16 +75,16 @@ export default class App extends React.Component {
           onChange={this.onChangeInputEmail}
           placeholder="e-mail"
         />
-        <button onClick={this.createUser}>Cria Usuário</button></div>)
-      }else{
-        return <ListaUser/>
-      }
-    }
+        <button onClick={this.createUser}>Cria Usuário</button></Cadastro>)
+    } 
+  
+  render() {
+    
     return (
       <section>
         <button onClick={this.botaoTrocar}>Trocar de tela</button>
-        <Renderizar/>
-       
+        {this.state.trocarPagina===true ? this.Renderizar():<ListaUser />}
+    
       </section>
     );
   }

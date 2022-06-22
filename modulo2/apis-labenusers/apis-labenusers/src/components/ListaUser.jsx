@@ -1,7 +1,15 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
-
+const Usuarios = styled.div`
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+`
 export default class ListaUser extends React.Component {
   state = {
     listaUsuario: []
@@ -44,10 +52,10 @@ export default class ListaUser extends React.Component {
 
   render() {
     const listaUser = this.state.listaUsuario.map(usuario => {
-      return (<div key={usuario.id}>
+      return (<Usuarios key={usuario.id}>
         <p>{usuario.name}</p>
         <button onClick={() => this.deleteUsers(usuario.id)}>deletar</button>
-      </div>)
+        </Usuarios>)
     })
     return (
       <div>{listaUser}</div>
