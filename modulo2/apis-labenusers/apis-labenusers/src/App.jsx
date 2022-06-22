@@ -3,8 +3,6 @@ import axios from 'axios';
 import ListaUser from './components/ListaUser';
 import './App.css';
 
-
-
 export default class App extends React.Component {
   state = {
     inputName: "",
