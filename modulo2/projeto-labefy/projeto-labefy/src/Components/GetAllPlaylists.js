@@ -18,6 +18,22 @@ export default class Playlists extends React.Component {
   componentDidMount() {
     this.GetAllPlaylists()
   }
+  deletePlaylist = (playlistId) => {
+    if (window.confirm("Deseja deletar?")) {
+      axios.delete(
+        "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
+
+        {
+          headers: {
+            Authorization: "aline-chagas-freire"
+          }
+        }
+      ).then((response) => {
+        alert("Playlist Excluída")
+        this.GetAllPlaylists()
+      });
+    }
+  }
 
   GetAllPlaylists= () => {
     axios.get(
@@ -43,6 +59,7 @@ export default class Playlists extends React.Component {
     const listaPlaylist = this.state.listaPlaylist.map(playlist => {
       return (<Playlist key={playlist.id}>
         <p>{playlist.name}</p>
+        <button onClick={() => this.deletePlaylist(playlist.id)}>deletar</button>
         </Playlist>)
     })
     return (
