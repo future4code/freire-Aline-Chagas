@@ -21,7 +21,7 @@ export default class Playlists extends React.Component {
   deletePlaylist = (playlistId) => {
     if (window.confirm("Deseja deletar?")) {
       axios.delete(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
+        `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}`,
 
         {
           headers: {
