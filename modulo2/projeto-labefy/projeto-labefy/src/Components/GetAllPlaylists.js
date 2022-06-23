@@ -29,7 +29,7 @@ export default class Playlists extends React.Component {
         }
       }
     ).then((response) => {
-      this.setState({ listaPlaylist: response.data })
+      this.setState({ listaPlaylist: response.data.result.list})
     })
     .catch((error) =>{
       console.log(error.response);

@@ -1,13 +1,16 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
-import GetAllPlaylists from "./GetAllPlaylists";
+
 
 const Playlist = styled.div`
 border: 5px solid black;
 align-items: center;
 display: flex;
+flex-direction: column;
 justify-content: center;
+width: 500px;
+margin: 0 auto;
 `
 
 export default class CreatePlaylist extends React.Component {
@@ -60,7 +63,6 @@ onChangeInputPlaylist = (event) => {
               placeholder="Insira o nome da Playlist"
             />
             <button onClick={this.CreatePlaylist}>Cria Playlist</button>
-            <button onClick={GetAllPlaylists}>Pesquisar Playlist</button>
             </Playlist>
         )} 
       
