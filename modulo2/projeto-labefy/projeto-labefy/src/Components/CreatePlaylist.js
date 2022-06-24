@@ -4,13 +4,15 @@ import styled from "styled-components";
 
 
 const Playlist = styled.div`
-border: 5px solid black;
+border: 1px solid black;
 align-items: center;
 display: flex;
 flex-direction: column;
-justify-content: center;
-width: 500px;
+justify-content: space-evenly;
+width: 300px;
+height: 200px;
 margin: 0 auto;
+border-radius: 5px;
 `
 
 export default class CreatePlaylist extends React.Component {
