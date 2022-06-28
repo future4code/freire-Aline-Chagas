@@ -19,6 +19,7 @@ export default class AddTrackToPlaylist extends React.Component {
     InputSong: "",
     InputArtist: "",
     InputUrl: "",
+    page:"playlist"
   };
 
   onChangeInputSong = (event) => {
@@ -30,7 +31,12 @@ export default class AddTrackToPlaylist extends React.Component {
   onChangeInputUrl = (event) => {
     this.setState({ InputUrl: event.target.value });
   };
-  AddTrack = () => {
+
+
+  AddTrack = (listId) => {
+    //recebe id da playlist
+    //troca a page para Vazio 
+    this.setState({page:""})
     const body = {
       name: this.state.InputSong,
       artist: this.state.InputArtist,
@@ -38,7 +44,7 @@ export default class AddTrackToPlaylist extends React.Component {
     };
 
     const request = axios.post(
-      "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+      `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${listId}/tracks`,
       body,
       {
         headers: {
@@ -47,20 +53,24 @@ export default class AddTrackToPlaylist extends React.Component {
       }
     );
 
-    request
-      .then((response) => {
+    request.then((response) => {
         console.log(response.data);
         alert("Música adicionada com sucesso!");
-        this.setState({ InputSong: "" });
-      })
-      .catch((error) => {
+        this.setState({ InputSong: "" })
+        this.setState({ InputArtist: "" })
+        this.setState({ InputUrl: "" });
+      }).catch((error) => {
         console.log(error.response);
         alert("Música não pode ser adicionada");
       });
   };
 
-  Renderizar = () => {
+
+
+  Renderizar = (listId) => {
+    //recebe o id da playlist
     return (
+      <section>
       <AddTrack>
         <label>Adicionar Música</label>
         <input
@@ -78,12 +88,32 @@ export default class AddTrackToPlaylist extends React.Component {
           onChange={this.onChangeInputUrl}
           placeholder="Insira a URL da música"
         />
-        <button onClick={this.AddTrack}>Adicionar Música</button>
+    {/* chama a função para adicionar a track carregando o id da playlist */}
+        <button onClick={()=>this.AddTrack(listId)}>Adicionar Música</button>
       </AddTrack>
+      </section>
+            
     );
   };
+ 
 
+  trocarSection = (listId)=>{
+    //Adicionei só pra adicionar a section e chamar a Renderizar
+      this.setState({page:""})
+
+  }
   render() {
-    return <section>{this.Renderizar()}</section>;
+    //se estivermos na pagina "playlist"
+    if(this.state.page ==="playlist"){
+      //O botão é apresentado, se não, a section é apresentada 
+     return( 
+       
+      <button onClick={
+       ()=>this.trocarSection()}> Add track</button> 
+    )
+    }else{
+    return <section>{this.Renderizar(this.props.listId)}</section>;
+    }
   }
 }
+

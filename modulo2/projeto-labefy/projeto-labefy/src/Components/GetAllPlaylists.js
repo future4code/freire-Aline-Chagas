@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import addTrack from './AddTrackToPlaylist'
+import AddTrackToPlaylist from './AddTrackToPlaylist';
 
 const Playlist = styled.div`
     border: 1px solid black;
@@ -11,14 +13,18 @@ const Playlist = styled.div`
     display: flex;
     justify-content: space-between;
 `
-export default class Playlists extends React.Component {
+export default class Playlists extends React.Component  {
   state = {
-    listaPlaylist: []
+    listaPlaylist: [],
+    page: "playlists"
   }
 
   componentDidMount() {
     this.GetAllPlaylists()
   }
+
+
+  
   deletePlaylist = (playlistId) => {
     if (window.confirm("Deseja deletar?")) {
       axios.delete(
@@ -54,12 +60,23 @@ export default class Playlists extends React.Component {
     })
 
   }
-  
+  trocarPage = (listId)=>{
+    if (this.state.page === "playlists"){
+      console.log("clicou",listId);
+
+     return(<AddTrackToPlaylist AddTrack={listId} ></AddTrackToPlaylist>)
+    }
+
+
+  }
 
   render() {
     const listaPlaylist = this.state.listaPlaylist.map(playlist => {
-      return (<Playlist key={playlist.id}>
-        <p>{playlist.name}</p>
+      return (
+        <Playlist key={playlist.id}>
+        <p> {playlist.name}</p>
+        <AddTrackToPlaylist listId={playlist.id}></AddTrackToPlaylist>
+        {/* <button onClick={() => this.trocarPage(playlist.id)} > listId={playlist.id} </button> */}
         <button onClick={() => this.deletePlaylist(playlist.id)}>deletar</button>
         </Playlist>)
     })
