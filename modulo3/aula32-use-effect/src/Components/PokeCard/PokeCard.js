@@ -7,7 +7,7 @@ function PokeCard(props) {
   useEffect(() => {
     pegaPokemon(props.pokemon);
   }, [props.pokemon]);
-
+//useEffect 
   const pegaPokemon = (pokeName) => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
