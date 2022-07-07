@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgb(67, 65, 65);
 }
 
 @media (prefers-reduced-motion: no-preference) {
