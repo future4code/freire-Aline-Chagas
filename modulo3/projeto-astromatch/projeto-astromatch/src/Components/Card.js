@@ -5,6 +5,7 @@ import axios from "axios";
 import styled from "styled-components";
 import like from "../img/like.png";
 import unlike from "../img/unlike.png";
+import match from "../img/match.png"
 
 const Estilizacao = styled.div`
   border: 1px solid black;
@@ -20,15 +21,15 @@ const Estilizacao = styled.div`
   justify-content: center;
   align-items: center;
     width: 400px;
-    height: 360px;
+    height: 300px;
     border-radius: 5px;
     overflow: hidden;
   }
 
   #imagem::after{
     content: "";
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     position: absolute;
     background: url(${props => props.imagem});
     background-size: cover;
@@ -39,8 +40,8 @@ const Estilizacao = styled.div`
 
   #imagem::before{
     content: "";
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     position: absolute;
     right: 1px;
     background: linear-gradient(0deg,rgb(0 0 0) 10%,rgba(0,0,0,0) 73%);
@@ -50,21 +51,25 @@ const Estilizacao = styled.div`
   }
 
   #perfil{
-    width: 100%;
+    width: 70%;
     z-index: 5;
   }
 
   p{
     font-size: 25px;
+    text-shadow:  0.1em 0.1em 0.2em black;
+    float: left;
   }
 
   h2 {
     text-align: start;
     font-size: large;
+    text-shadow:  0.1em 0.1em 0.2em black;
   }
 
   h1{
     text-align: left;
+    text-shadow:  0.1em 0.1em 0.2em black;
   }
 
   button {
@@ -98,6 +103,21 @@ const Estilizacao = styled.div`
     z-index: 50;
 
   }
+  .matchbutton{
+    display: flex;
+    width: 45px;
+    height: 45px;
+    align-content: flex-end;
+    justify-content: end;
+    align-content: space-between;
+    float: right;
+  }
+.topApp{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 
   #botaoMatch{
     display: flex;
@@ -159,10 +179,11 @@ export default function Card(props) {
   const MostraPerfil = () => {
     return (
       <Estilizacao imagem={perfil.photo}>
-        <p>Astromatch</p>
-        <button onClick={()=>props.setTelas("teste")}>Matches</button>
-        <button onClick={props.LimpaLista}>Limpar Matches</button>
-
+        <div className="topApp">
+        <p>Astromatch</p> <button onClick={()=>props.setTelas("teste")}>
+        <img className="matchbutton" src={match} /></button>
+        </div>
+      
         <div id="estilizacaoPerfil">
 
           <div id="imagem">
