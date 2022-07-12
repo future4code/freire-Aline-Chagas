@@ -1,1 +1,6 @@
-import react from react;
+
+export const AdminHomePage=()=>{
+    return (
+        <p>Admin</p>
+    )
+};
