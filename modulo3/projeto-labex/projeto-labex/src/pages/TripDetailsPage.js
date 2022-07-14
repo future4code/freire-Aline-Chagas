@@ -1,5 +1,7 @@
-import { Return } from "./Routes/Coordinator";
+import { useNavigate } from "react-router-dom";
+import { voltaPagina } from "./Routes/Coordinator";
 
 export const TripDetailsPage = () => {
-  return <button onClick={() => Return}>Voltar</button>;
+  const navigate =useNavigate()
+  return <button onClick={voltaPagina(navigate)}>Voltar</button>;
 };

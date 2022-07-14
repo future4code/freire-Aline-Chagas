@@ -2,10 +2,13 @@ export const goToTripsList = (navigate) => {
   navigate("/trips/list");
 };
 
-export const LoginAdmin = (navigate) => {
+export const loginAdmin = (navigate) => {
   navigate("/login");
 };
 
-export const Return = (navigate) => {
-    navigate(-1)
-}
+export const voltaPagina = (navigate) => {
+  navigate(-1);
+};
+export const goToApplicationForm = (navigate) => {
+  navigate("/trips/application");
+};
