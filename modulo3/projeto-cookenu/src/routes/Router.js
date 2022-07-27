@@ -6,10 +6,13 @@ import RecipeDetailPage from "../pages/RecipeDetailPage";
 import RecipesListPage from "../pages/RecipesListPage";
 import SignUpPage from "../pages/SignUpPage";
 import ErrorPage from "../pages/ErrorPage";
+import Header from "../components/Header/Header";
+
 
 const Router = () => {
   return (
     <BrowserRouter>
+    <Header/>
       <Routes>
         <Route index element={<LoginPage />} />
         <Route path="/cadastro" element={<SignUpPage />} />

@@ -1,11 +1,13 @@
 import React from "react";
+import { ThemeProvider } from "styled-components";
 import Router from "./routes/Router";
+import theme from "./constants/theme"
 
 const App = () => {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <Router />
-    </div>
+    </ThemeProvider>
   );
 };
 
