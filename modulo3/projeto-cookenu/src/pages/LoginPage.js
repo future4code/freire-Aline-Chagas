@@ -9,8 +9,10 @@ import { Button } from "@material-ui/core";
 import LoginForm from "../hooks/LoginForm";
 import {goToSignUpPage} from "../routes/Coordinator";
 import { useNavigate } from "react-router-dom";
+import useUnprotectedPage from "../hooks/useUnptotectedPage";
 
 const LoginPage = () => {
+  useUnprotectedPage()
 const navigate = useNavigate()
   return (
     <ScreenContainer>

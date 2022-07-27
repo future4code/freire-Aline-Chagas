@@ -1,15 +1,19 @@
 import React from "react";
 import { InputsContainer } from "../pages/styledLogin";
-
 import { Button, TextField } from "@material-ui/core";
 import useForm from "../hooks/useForm";
+import { useNavigate } from "react-router-dom";
+import {signUp} from "../services/user";
 
 const SignUpForm = () => {
-  const [form, onChange] = useForm({ name: "", email: "", password: "" });
+  const navigate=useNavigate()
+  const [form, onChange, clear] = useForm({ name: "", email: "", password: "" });
 
   const onSubmitForm = (event) => {
     event.preventDefault();
+    signUp(form, clear, navigate)
   };
+
   return (
     <InputsContainer>
       <form onSubmit={onSubmitForm} />
