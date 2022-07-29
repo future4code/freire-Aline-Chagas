@@ -1,9 +1,10 @@
 import axios from "axios";
 import { goToRecipesListPage } from "../routes/Coordinator";
 
-export const login = (body, clear, navigate, setRightButtonText) => {
+
+export const login = (form, clear, navigate, setRightButtonText) => {
   axios
-    .post(`https://cookenu-api.herokuapp.com/user/login`, body)
+    .post(`https://cookenu-api.herokuapp.com/user/login`, form)
     .then((res) => {
       localStorage.setItem("token", res.data.token);
       clear();
@@ -17,13 +18,13 @@ export const login = (body, clear, navigate, setRightButtonText) => {
     });
 };
 
-export const signUp = (body, clear, navigate, setRightButtonText) => {
+export const signUp = (form, clear, navigate, setRightButtonText) => {
   axios
-    .post(`https://cookenu-api.herokuapp.com//user/signup`, body)
+    .post(`https://cookenu-api.herokuapp.com/user/signup`, form)
     .then((res) => {
       localStorage.setItem("token", res.data.token);
       clear();
-      alert("Cadastro realizado! Faça seu login!")
+      alert("Cadastro realizado!")
       goToRecipesListPage(navigate);
       setRightButtonText("Logout");
     })
