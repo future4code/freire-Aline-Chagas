@@ -2,30 +2,45 @@ import React from "react";
 import { InputsContainer } from "../pages/styledLogin";
 import { Button, TextField } from "@material-ui/core";
 import useForm from "../hooks/useForm";
-import { useNavigate } from "react-router-dom";
-import { signUp } from "../services/user";
+import axios from "axios";
 
-const SignUpForm = ({ setRightButtonText }) => {
-  const navigate = useNavigate();
+const AddRecipeForm = () => {
   const [form, onChange, clear] = useForm({
-    name: "",
-    email: "",
-    password: "",
+    title: "",
+    description: "",
+    image: "",
   });
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    signUp(form, clear, navigate, setRightButtonText);
+
+    const createRecipe = (form, clear) => {
+      axios
+        .post(`https://cookenu-api.herokuapp.com/recipe`, form, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          alert(res.data.message);
+          clear();
+        })
+        .catch((err) => {
+          alert(err.response.message);
+        });
+    };
+
+    createRecipe(form, clear);
   };
 
   return (
     <InputsContainer>
       <form onSubmit={onSubmitForm}>
         <TextField
-          name={"name"}
-          value={form.name}
+          name={"title"}
+          value={form.title}
           onChange={onChange}
-          label={"Nome"}
+          label={"Título"}
           variant={"outlined"}
           fullWidth
           margin={"normal"}
@@ -33,26 +48,24 @@ const SignUpForm = ({ setRightButtonText }) => {
           autoFocus
         />
         <TextField
-          name={"email"}
-          value={form.email}
+          name={"description"}
+          value={form.description}
           onChange={onChange}
-          label={"E-mail"}
+          label={"Descrição"}
           variant={"outlined"}
           fullWidth
           margin={"normal"}
           required
-          type={"E-mail"}
         />
         <TextField
-          name={"password"}
-          value={form.password}
+          name={"image"}
+          value={form.image}
           onChange={onChange}
-          label={"Senha"}
+          label={"Foto"}
           variant={"outlined"}
           fullWidth
           margin={"normal"}
           required
-          type={"password"}
         />
 
         <Button
@@ -61,11 +74,11 @@ const SignUpForm = ({ setRightButtonText }) => {
           type={"submit"}
           fullWidth
         >
-          Fazer Cadastro
+          Adicionar Receita
         </Button>
       </form>
     </InputsContainer>
   );
 };
 
-export default SignUpForm;
+export default AddRecipeForm;

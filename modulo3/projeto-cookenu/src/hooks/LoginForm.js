@@ -2,25 +2,19 @@ import React from "react";
 import { InputsContainer, LoginFormContainer } from "../pages/styledLogin";
 import { Button, TextField } from "@material-ui/core";
 import useForm from "../hooks/useForm";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { goToRecipesListPage } from "../routes/Coordinator";
+import { login } from "../services/user";
+import { useState } from "react";
+import { CircularProgress } from "@mui/material";
 
-const LoginForm = () => {
-  const navigate = useNavigate();
+const LoginForm = ({ setRightButtonText }) => {
   const [form, onChange, clear] = useForm({ email: "", password: "" });
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    axios
-      .post(`https://cookenu-api.herokuapp.com/user/login`, form)
-      .then((res) => {
-        localStorage.setItem("token", res.data.token);
-        goToRecipesListPage(navigate);
-        clear();
-      })
-
-      .catch((err) => alert("Erro no Login"));
+    login(form, clear, navigate, setRightButtonText, setIsLoading);
   };
 
   return (
@@ -49,14 +43,17 @@ const LoginForm = () => {
             required
             type={"password"}
           />
-
           <Button
             type={"submit"}
             fullWidth
             variant={"contained"}
             color={"primary"}
           >
-            Fazer Login
+            {isLoading ? (
+              <CircularProgress color={"inherit"} size={24} />
+            ) : (
+              <>Fazer Login</>
+            )}
           </Button>
         </form>
       </InputsContainer>

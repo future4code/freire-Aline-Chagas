@@ -2,25 +2,25 @@ import React from "react";
 import {
   LogoImage,
   ScreenContainer,
-   SignUpButtonContainer,
+  SignUpButtonContainer,
 } from "./styledLogin";
 import logo from "../assets/logo.png";
 import { Button } from "@material-ui/core";
 import LoginForm from "../hooks/LoginForm";
-import {goToSignUpPage} from "../routes/Coordinator";
+import { goToSignUpPage } from "../routes/Coordinator";
 import { useNavigate } from "react-router-dom";
 import useUnprotectedPage from "../hooks/useUnptotectedPage";
 
-const LoginPage = () => {
-  useUnprotectedPage()
-const navigate = useNavigate()
+const LoginPage = ({ setRightButtonText }) => {
+  useUnprotectedPage();
+  const navigate = useNavigate();
   return (
     <ScreenContainer>
       <LogoImage src={logo} />
-      <LoginForm/>
+      <LoginForm setRightButtonText={setRightButtonText} />
       <SignUpButtonContainer>
         <Button
-        onClick={() => goToSignUpPage(navigate)}
+          onClick={() => goToSignUpPage(navigate)}
           type={"submit"}
           fullWidth
           variant={"text"}

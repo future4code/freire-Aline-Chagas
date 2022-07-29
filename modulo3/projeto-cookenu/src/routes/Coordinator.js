@@ -6,8 +6,8 @@ export const goToRecipesListPage = (navigate) => {
   navigate("/receitas/lista");
 };
 
-export const goToRecipeDetailPage = (navigate) => {
-  navigate(`detalhe/:id`);
+export const goToRecipeDetailPage = (navigate, id) => {
+  navigate(`/detalhes/${id}`);
 };
 
 export const goToAddRecipePage = (navigate) => {

@@ -1,39 +1,33 @@
 import axios from "axios";
-import { BASE_URL } from "../constants/url";
-import { goToRecipesListPage } from '../routes/Coordinator';
+import { goToRecipesListPage } from "../routes/Coordinator";
 
+export const login = (body, clear, navigate, setRightButtonText) => {
+  axios
+    .post(`https://cookenu-api.herokuapp.com/user/login`, body)
+    .then((res) => {
+      localStorage.setItem("token", res.data.token);
+      clear();
 
-export const login = (body, clear, navigate, setRightButtonText, setIsLoading) => {
- 
+      goToRecipesListPage(navigate);
+      setRightButtonText("Logout");
+      alert("Bem-Vindx!");
+    })
+    .catch((err) => {
+      console.log("Login não realizado :( ");
+    });
+};
 
-    setIsLoading(true)
-    axios.post(`${BASE_URL}/user/login`, body)
-        .then((res) => {
-            console.log(res.data.token)
-            localStorage.setItem("token", res.data.token)
-            clear()
-            setIsLoading(false)
-            goToRecipesListPage(navigate)
-            setRightButtonText("Logout")
-        })
-        .catch((err) => {
-            setIsLoading(false)
-            
-        })
-}
-
-export const signUp = (body, clear, navigate, setRightButtonText, setIsLoading) => {
-    setIsLoading(true)
-    axios.post(`${BASE_URL}/user/signup`, body)
-        .then((res) => {
-            localStorage.setItem("token", res.data.token)
-            clear()
-            setIsLoading(false)
-            goToRecipesListPage(navigate)
-            setRightButtonText("Logout")
-        })
-        .catch((err) => {
-            setIsLoading(false)
-            alert(err.response.data.message)
-        })
-}
+export const signUp = (body, clear, navigate, setRightButtonText) => {
+  axios
+    .post(`https://cookenu-api.herokuapp.com//user/signup`, body)
+    .then((res) => {
+      localStorage.setItem("token", res.data.token);
+      clear();
+      alert("Cadastro realizado! Faça seu login!")
+      goToRecipesListPage(navigate);
+      setRightButtonText("Logout");
+    })
+    .catch((err) => {
+      alert("Opa! Algo deu errado...");
+    })
+  }
