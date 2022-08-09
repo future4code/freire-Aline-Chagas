@@ -1,3 +1,7 @@
+const nome =process.argv[2]
+const idadeAtual =Number(process.argv[3])
+const idadeFutura = idadeAtual + 7
+
 console.log(
-  ` Olá, ${process.argv[2]}. Você tem ${process.argv[3]} anos. Em sete anos você terá ${process.argv[4]}.`
+  ` \u001B[35m Olá, ${nome}. Você tem ${idadeAtual} anos. Em sete anos você terá ${idadeFutura}.`
 );
