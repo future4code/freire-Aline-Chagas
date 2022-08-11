@@ -1,4 +1,4 @@
-const minhaString: string = "Aline"
+
 
 type Pessoa ={
     nome:string,
@@ -20,4 +20,16 @@ const pessoa:Pessoa = {
     idade: 33,
     corFavorita:Cores.VIOLETA
 }
+const pessoa1:Pessoa = {
+    nome: "Agnes",
+    idade: 8,
+    corFavorita:Cores.VERMELHO
+}
+const pessoa2:Pessoa = {
+    nome: "Katherine",
+    idade: 8,
+    corFavorita:Cores.AZUL
+}
 console.table(pessoa)
+console.table(pessoa1)
+console.table(pessoa2)
