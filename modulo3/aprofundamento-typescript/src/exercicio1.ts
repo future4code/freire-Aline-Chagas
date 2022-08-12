@@ -1,4 +1,7 @@
+const minhaString: string = "Aline"
 
+let meuNumero: number | string 
+// para que o objeto aceite mais de um tipo de valor, pode-se utilizar union type ou any, porém o any não é muito recomendável.
 
 type Pessoa ={
     nome:string,

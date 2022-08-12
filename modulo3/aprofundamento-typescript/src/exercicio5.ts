@@ -1,0 +1,1 @@
+// comparando com o slide, algumas propriedades não tinham os valores adequados ou os comentários
