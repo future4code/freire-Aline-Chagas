@@ -65,17 +65,43 @@ const post:Post[]=[
     id: 1,
     title: 'No dia em que eu saí de casa',
     body: 'minha mãe me disse: filho, vem cá'
-
-
-    
-    
-
-}
-   
+},
+    {
+    userId:1,
+    id: 2,
+    title: 'Receita de bolo gostoso',
+    body: '2 ovos, duas xícaras de farinha, uma xícara de açúcar, meia xícara de chocolate em pó, duas colheres de Manteiga...'
+},
+    {
+    userId:2,
+    id: 1,
+    title: 'A balada foi muito legal',
+    body: 'tirando a Julia que vomitou no meu pé :('
+},
+    {
+    userId:3,
+    id: 1,
+    title: 'Qual a música favorita de vcs?',
+    body: 'eu gosto MUITO daquela que é assim: "param param param pampam... eu só não sei o nome'
+},
+    {
+    userId:4,
+    id: 1,
+    title: 'Nunca mais eu bebo',
+    body: 'que ressaca, socorro!'
+} 
 ]
 
 app.get('/users', (req,res)=>{
    res.send(user)
+})
+
+app.get('/posts', (req,res)=>{
+   res.send(post)
+})
+
+app.get('/posts/1', (req,res)=>{
+   res.send(post)
 })
 
 const server = app.listen(process.env.PORT || 3003, () => {
