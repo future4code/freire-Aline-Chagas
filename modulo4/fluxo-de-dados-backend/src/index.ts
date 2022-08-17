@@ -76,8 +76,39 @@ app.post("/addProduct", (req, res) => {
 });
 
 // exercicio 8
+app.put("/editProduct/:id", (req, res) => {
+  const idProduct = Number(req.params.id);
+  const { name, price } = req.body;
+  const editProduct = list.find((product) => {
+    return product.id === idProduct;
+  });
 
+  if (!editProduct) { throw new Error('Produto não encontrado') }
+  if (!price || typeof price !== "number" || price <= 0) {
+    throw new Error("o preço do produto é inválido");
+  }
+
+  const editedProduct = { ...editProduct, name, price }
+  const thisIndex = list.findIndex(i => i.id = idProduct)
+
+  list[thisIndex] = editedProduct
+
+  res.send(list);
+});
 // exercicio 9
+app.delete("/deleteProduct/:id", (req, res) => {
+  const idProduct = Number(req.params.id);
+  const thisIndex = list.findIndex(i => i.id = idProduct)
+
+  if (thisIndex === -1) {
+    throw new Error('Produto não encontrado')
+  }
+
+  list.splice(thisIndex, 1)
+
+  res.send(list);
+});
+
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
