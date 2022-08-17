@@ -14,7 +14,7 @@ type List = {
   userId: number;
   id: number;
   title: string;
-  completed: boolean;
+  completed: boolean | string;
 };
 
 const list: List[] = [
@@ -66,6 +66,55 @@ app.get("/toDoListStatus", (req, res) => {
   });
   res.send({tarefas})
 });
+
+app.post('/createTask', (req, res) => {
+  const newTaskList = {
+    userId: req.body.userId,
+    id: req.body.id,
+    title: req.body.title,
+    completed: req.body.completed
+  }
+const tasks = list
+list.push(newTaskList)
+  res.send(tasks)
+})
+
+app.put('/editTask/:id', (req,res)=>{
+  const idTask = Number(req.params.id)
+  const editTask = list.filter((task)=>{
+    return task.id === idTask
+  })
+  editTask[0] ={
+    ...editTask[0],
+    completed:!editTask[0].completed
+  }
+  const updatedList = list.map((task) => {
+    if (task.id === idTask) {
+        return editTask[0]
+    } else {
+        return task
+    }
+})
+res.send(updatedList)
+})
+
+app.delete('/deleteTask/:id', (req,res)=>{
+  const idTask = Number(req.params.id)
+  const updatedTask = list.filter((task)=>{
+    return task.id !== idTask
+  }) 
+res.send(updatedTask)
+})
+
+app.get('/userTask/:userId', (req,res)=>{
+  const userId = Number(req.params.userId)
+  const userTask = list.filter((task)=>{
+    return task.userId === userId
+  }) 
+res.send(userTask)
+})
+
+
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
