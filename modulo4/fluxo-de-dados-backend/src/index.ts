@@ -1,9 +1,9 @@
 import express from "express";
 
 import { AddressInfo } from "net";
-import {data} from "./data"
+import {product} from "./data"
 
-const list = data
+const list = product
 
 const app = express();
 
@@ -28,13 +28,36 @@ app.get("/test", (req, res) => {
 // exercicio 4
 
 app.get("/productList", (req, res) => {
-    res.send(data) 
+    res.send(product) 
   });
 
 // exercicio 5
-
+app.put('/editProduct/:id', (req,res)=>{
+    const idProduct = Number(req.params.id)
+    const editProduct = list.filter((product)=>{
+      return product.id === idProduct
+    })
+    editProduct[0] ={
+      ...editProduct[0],
+      price:editProduct[0].price
+    }
+    const updatedList = list.map((product) => {
+      if (product.id === idProduct) {
+          return editProduct[0]
+      } else {
+          return product
+      }
+  })
+  res.send(updatedList)
+  })
 // exercício 6
-
+app.delete('/deleteProduct/:id', (req,res)=>{
+    const idProduct = Number(req.params.id)
+    const updatedList = list.filter((product)=>{
+      return product.id !== idProduct
+    }) 
+  res.send(updatedList)
+  })
 // exercicio 7
 
 // exercicio 8

@@ -1,5 +1,5 @@
 // exercício 2
-export const data=[
+export const product=[
     {
     id:1,
     name: 'chocolate',
