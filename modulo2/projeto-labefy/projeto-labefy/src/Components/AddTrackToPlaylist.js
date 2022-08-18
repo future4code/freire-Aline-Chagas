@@ -19,7 +19,9 @@ export default class AddTrackToPlaylist extends React.Component {
     InputSong: "",
     InputArtist: "",
     InputUrl: "",
+
     page:"playlist"
+
   };
 
   onChangeInputSong = (event) => {
@@ -33,10 +35,14 @@ export default class AddTrackToPlaylist extends React.Component {
   };
 
 
+
   AddTrack = (listId) => {
     //recebe id da playlist
     //troca a page para Vazio 
     this.setState({page:""})
+
+  AddTrack = () => {
+
     const body = {
       name: this.state.InputSong,
       artist: this.state.InputArtist,
@@ -44,7 +50,11 @@ export default class AddTrackToPlaylist extends React.Component {
     };
 
     const request = axios.post(
+
       `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${listId}/tracks`,
+
+      "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+
       body,
       {
         headers: {
@@ -53,6 +63,7 @@ export default class AddTrackToPlaylist extends React.Component {
       }
     );
 
+
     request.then((response) => {
         console.log(response.data);
         alert("Música adicionada com sucesso!");
@@ -60,6 +71,15 @@ export default class AddTrackToPlaylist extends React.Component {
         this.setState({ InputArtist: "" })
         this.setState({ InputUrl: "" });
       }).catch((error) => {
+
+    request
+      .then((response) => {
+        console.log(response.data);
+        alert("Música adicionada com sucesso!");
+        this.setState({ InputSong: "" });
+      })
+      .catch((error) => {
+
         console.log(error.response);
         alert("Música não pode ser adicionada");
       });
@@ -67,10 +87,15 @@ export default class AddTrackToPlaylist extends React.Component {
 
 
 
+
   Renderizar = (listId) => {
     //recebe o id da playlist
     return (
       <section>
+
+  Renderizar = () => {
+    return (
+
       <AddTrack>
         <label>Adicionar Música</label>
         <input
@@ -88,6 +113,7 @@ export default class AddTrackToPlaylist extends React.Component {
           onChange={this.onChangeInputUrl}
           placeholder="Insira a URL da música"
         />
+
     {/* chama a função para adicionar a track carregando o id da playlist */}
         <button onClick={()=>this.AddTrack(listId)}>Adicionar Música</button>
       </AddTrack>
@@ -114,6 +140,17 @@ export default class AddTrackToPlaylist extends React.Component {
     }else{
     return <section>{this.Renderizar(this.props.listId)}</section>;
     }
+  }
+}
+
+
+        <button onClick={this.AddTrack}>Adicionar Música</button>
+      </AddTrack>
+    );
+  };
+
+  render() {
+    return <section>{this.Renderizar()}</section>;
   }
 }
 
