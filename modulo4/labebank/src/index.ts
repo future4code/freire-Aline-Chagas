@@ -9,9 +9,9 @@ app.use(cors());
 
 const bankList = user;
 // endpoint lista usuario
-// app.get("/userList", (req, res) => {
-//     res.send(bankList);
-//   });
+app.get("/userList", (req, res) => {
+    res.send(bankList);
+  });
 
 // endpoint criar conta
 app.post("/addAccount", (req, res) => {
@@ -27,7 +27,7 @@ app.post("/addAccount", (req, res) => {
   res.send(addAccount);
 });
 
-// endpoint 
+// endpoint pegar saldo
 
 app.listen(3003, () => {
   console.log("Server is running in http://localhost:3003");

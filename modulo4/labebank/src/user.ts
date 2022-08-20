@@ -6,7 +6,7 @@ type User = {
     birth:string
 }
 
-type balance ={
+type Balance ={
     value:number,
     date:string,
     description:string
