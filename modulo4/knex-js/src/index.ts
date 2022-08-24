@@ -11,71 +11,71 @@ app.use(cors());
 // exercício 1
 // a) o método raw retorna exatamente o que está no banco de dados, utilizando diretamente a linguagem SQL
 
-// app.get("/ator/:name", async(req,res) =>{
-//  try{
-// const name = req.params.name
-// const result = await connection.raw(`
-//   SELECT * FROM Actor
-//   WHERE name = "${name}"
-//  `);
-//  res.status(200).send(result);
-//  }catch(error:any) {
-//     res.status(500).send(error.sqlMessage || error.message);
-//  }
-// });
-//
+app.get("/ator/:name", async(req,res) =>{
+ try{
+const name = req.params.name
+const result = await connection.raw(`
+  SELECT * FROM Actor
+  WHERE name = "${name}"
+ `);
+ res.status(200).send(result);
+ }catch(error:any) {
+    res.status(500).send(error.sqlMessage || error.message);
+ }
+});
 
-// app.get('/ator/:gender', async (req,res) =>{
-//     try{
-//     const gender:string = req.params.gender
-//     const result = await connection.raw(`
-//     SELECT * FROM Actor
-//     WHERE gender = "${gender}"
-//     `);
-//     res.status(200).send(result[0]);
 
-//     }catch(error:any){
-//     res.status(500).send(error.sqlMessage || error.message);
+app.get('/ator/:gender', async (req,res) =>{
+    try{
+    const gender:string = req.params.gender
+    const result = await connection.raw(`
+    SELECT * FROM Actor
+    WHERE gender = "${gender}"
+    `);
+    res.status(200).send(result[0]);
 
-//     }
-// });
+    }catch(error:any){
+    res.status(500).send(error.sqlMessage || error.message);
 
-// app.put("/ator/salario/:id", async (req, res) => {
-//     try {
-//      await connection("Actor")
-//         .update({
-//           salary: req.body.salary
-//         })
-//         .where({ id: req.params.id });
+    }
+});
 
-//       res.status(200).send('alterado com sucesso');
+app.put("/ator/salario/:id", async (req, res) => {
+    try {
+     await connection("Actor")
+        .update({
+          salary: req.body.salary
+        })
+        .where({ id: req.params.id });
 
-//     } catch (error: any) {
-//       res.status(500).send(error.sqlMessage || error.message);
-//     }
-//   });
+      res.status(200).send('alterado com sucesso');
 
-// app.delete("/ator/delete/:id", async (req, res) => {
-//   try {
-//     await connection("Actor").delete().where({ id: req.params.id });
-//     res.status(200).send("alterado com sucesso");
-//   } catch (error: any) {
-//     res.status(500).send(error.sqlMessage || error.message);
-//   }
-// });
+    } catch (error: any) {
+      res.status(500).send(error.sqlMessage || error.message);
+    }
+  });
 
-// app.get("/ator/salario/:gender", async (req, res) => {
-//   try {
-//     const gender: string = req.params.gender;
-//     const result = await connection.raw(`
-//     SELECT AVG (salary) FROM Actor
-//     WHERE gender = "${gender}"
-//     `);
-//     res.status(200).send(result);
-//   } catch (error: any) {
-//     res.status(500).send(error.sqlMessage || error.message);
-//   }
-// });
+app.delete("/ator/delete/:id", async (req, res) => {
+  try {
+    await connection("Actor").delete().where({ id: req.params.id });
+    res.status(200).send("alterado com sucesso");
+  } catch (error: any) {
+    res.status(500).send(error.sqlMessage || error.message);
+  }
+});
+
+app.get("/ator/salario/:gender", async (req, res) => {
+  try {
+    const gender: string = req.params.gender;
+    const result = await connection.raw(`
+    SELECT AVG (salary) FROM Actor
+    WHERE gender = "${gender}"
+    `);
+    res.status(200).send(result);
+  } catch (error: any) {
+    res.status(500).send(error.sqlMessage || error.message);
+  }
+});
 
 app.post("/ator", async (req, res) => {
   try {
