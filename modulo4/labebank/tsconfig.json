@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./build",
+    "rootDir": "./src" ,
+    "strict": true ,
+		"removeComments": true, 
+		"sourceMap": true, 
+    "noImplicitAny": true,  
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true 
+  }
+}
