@@ -8,14 +8,16 @@ export default async function editUser(req: Request, res: Response) {
       req.body.nickname === "" ||
       req.body.email === ""
     ) {
-      res.status(400).send("Preencha corretamente todos os campos");
+      res.status(400).send("Preencha corretamente todos os campos")
+      return
     }
 
-    if (!req.body.name && req.body.nickname && req.body.email) {
-      res.status(400).send("Informe ao menos um campo a ser alterado");
+    if (!req.body.name && !req.body.nickname && !req.body.email) {
+      res.status(400).send("Informe ao menos um campo a ser alterado")
+      return
     }
 
-    await updateUser(req.body.name, req.body.nickname, req.body.email);
+    await updateUser(req.params.id, req.body.name, req.body.nickname, req.body.email);
 
     res.status(200).send("Usuário Atualizado com sucesso");
   } catch (error: any) {

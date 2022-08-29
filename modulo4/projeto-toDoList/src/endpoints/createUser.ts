@@ -4,7 +4,8 @@ import insertUser from "../data/insertUser";
 export default async function createUser(req: Request, res: Response) {
   try {
     if (!req.body.name || !req.body.nickname || !req.body.email) {
-      res.status(400).send("Preencha corretamente os campos obrigatórios");
+      res.status(400).send("Preencha corretamente os campos obrigatórios")
+      return
     }
 
     const id:string = Date.now().toString()
