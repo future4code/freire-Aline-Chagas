@@ -51,8 +51,20 @@ const getSubscribers = async (): Promise<User[]> => {
 // exercicio 4
 // a) é uma função assíncrona, pois ela não precisa esperar toda a execução linha a linha do código para ser realizada.
 
+const news = {
+  title: "Nova notícia",
+  content: "conteúdo",
+  date: Date.now(),
+};
+const createNews = async (news: any):Promise<any> => {
+  return axios.put(`${baseURL}/news`, news);
+};
+
+
 const main = async (): Promise<void> => {
   try {
+    createNews(news)
+    console.log(news)
     const subscribers = await getSubscribers();
   } catch (error: any) {
     const resp = error.response?.data || error.message;
