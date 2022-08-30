@@ -4,14 +4,15 @@ import { connection } from "../data/connection"
 export const getAllUsers = async(req: Request,res: Response): Promise<any> =>{
    try {
       
-   } catch (error:any) {
+      const result = await connection.raw(`
+      SELECT id, name, email, type
+      FROM aula48_exercicio;
+   `)
+   res.send(result[0])
+   
+}catch (error:any) {
       console.log(error)
       res.send(error.message || error.sqlMessage)
    }
 }
 
-export const getUsersByName = async (req: Request,res: Response): Promise<any> =>{
- const result = await connection("aula48_exercicio")
- .where ('name','like', `%${name}%`)
- return result
-}
