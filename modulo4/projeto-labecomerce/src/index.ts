@@ -1,15 +1,16 @@
 import { AddressInfo } from "net";
 import app from "./app"
+import createUser from "./endpoints/createUser";
+import getAllUsers from "./endpoints/getAllUsers";
+import createProduct from "./endpoints/createProduct"
 
-
-app.get("/users")
+app.get("/users", getAllUsers)
 
 app.get("/products")
 
-app.post("/users")
+app.post("/users", createUser)
 
-app.post("/products")
-
+app.post("/products", createProduct)
 
 
 const server = app.listen(process.env.PORT || 3003, () => {

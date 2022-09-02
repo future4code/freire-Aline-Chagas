@@ -1,13 +1,25 @@
-GET http://localhost:3003/endereco/05424150
+###
+post http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "Pedro",
+    "email": "pedro@gmail.com",
+    "password":"123456p"
+
+}
 
 ###
-post https://cep-servicos-aula31-08.herokuapp.com/user/05424150
+GET http://localhost:3003/users
+
 
 ###
-post http://localhost:3003/user/05424150
+POST http://localhost:3003/products
+Content-Type: application/json
 
-###
-GET http://localhost:3003/list
+{
+    "name": "Monitor Gamer Curvo Samsung Odyssey 27",
+    "price": "4599.00",
+    "image_url":"https://images.samsung.com/is/image/samsung/br-odyssey-g7-c27g75t-lc27g75tqslxzd--308174086?$1300_1038_PNG$"
 
-###
-GET https://cep-servicos-aula31-08.herokuapp.com/list
+}
