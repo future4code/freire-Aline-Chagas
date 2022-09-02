@@ -12,14 +12,16 @@ Content-Type: application/json
 ###
 GET http://localhost:3003/users
 
-
 ###
 POST http://localhost:3003/products
 Content-Type: application/json
 
 {
-    "name": "Monitor Gamer Curvo Samsung Odyssey 27",
-    "price": "4599.00",
-    "image_url":"https://images.samsung.com/is/image/samsung/br-odyssey-g7-c27g75t-lc27g75tqslxzd--308174086?$1300_1038_PNG$"
+    "name": "Mouse Gamer",
+    "price": "45.00",
+    "image_url":"https://a-static.mlcdn.com.br/800x560/mouse-gamer-evolut-eg-104-rgb-led-rayden-2400-dpi-6-botoes/bornarkitel1/63/2112dae6567e9f54b02bd5ccf9f74"
 
 }
+
+###
+GET http://localhost:3003/products
