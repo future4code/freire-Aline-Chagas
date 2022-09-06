@@ -1,0 +1,7 @@
+GET http://localhost:3003/endereco/02614100?numero=11
+
+###
+POST http://localhost:3003/user/02614100/200
+
+###
+GET http://localhost:3003/endereco/02614100
