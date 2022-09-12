@@ -1,0 +1,20 @@
+{
+  "name": "introducao-autenticacao",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",  
+     "start": "tsc && node --inspect ./build/index.js",
+    "dev-start": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/uuid": "^8.3.4",
+    "jsonwebtoken": "^8.5.1",
+    "uuid": "^9.0.0"
+  }
+}
