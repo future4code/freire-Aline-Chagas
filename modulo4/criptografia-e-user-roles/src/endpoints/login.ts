@@ -1,8 +1,6 @@
 
 import { Request, Response } from "express";
 import connection from "../connection";
-import { AuthenticationData, user } from "../types";
-import { GenerateId } from "../services/GenerateId";
 import { Autheticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
 
@@ -34,10 +32,6 @@ export default async function login(
             throw new Error("credenciais inválidas")
         }
 
-        // Criando um token: verifique que a informação que vai ser inserida no token é: 
-        // user.id. Mas, o generateToken pede seu parâmetro no formato AuthenticatorData (id)
-        // sendo assim, passamos ele como ({id: user.id})
-        
         const newToken = new Autheticator()
         const token = newToken.generateToken({id: user.id, role:user.role})
 
@@ -48,7 +42,3 @@ export default async function login(
     }
 
 }
-
-// Informar email e senha 
-// Retornar um token de autenticação caso as credenciais sejam válidas, 
-// ou uma mensagem de erro caso contrário 

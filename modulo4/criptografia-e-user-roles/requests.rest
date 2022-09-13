@@ -20,7 +20,7 @@ Authorization: {{tokenAdmin}}
 Content-Type: application/json
 
 {
-   "name": "Bruno Amorim" 
+   "name": "Aline" 
 }
 
 ###
@@ -28,10 +28,10 @@ POST http://localhost:3003/user/login
 Content-Type: application/json
 
 {
-   "email":"testandohash@email.com",
-   "password":"labenubr" 
+    "email": "jão@email.com",
+   "password": "123456789", 
 }
 
 ###
 GET http://localhost:3003/user/profile
-Authorization:{{tokenAdmin}}
+Authorization:{{token}}

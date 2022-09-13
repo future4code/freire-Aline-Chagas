@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import connection from "../connection";
-import { AuthenticationData, user } from "../types";
+import { user } from "../types";
 import { GenerateId } from "../services/GenerateId";
 import { Autheticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
@@ -15,7 +15,7 @@ export default async function createUser(
     if (!name || !nickname || !email || !password) {
       res.statusCode = 422;
       throw new Error(
-        "Preencha os campos 'name','nickname', 'password' e 'email'"
+        "Preencha todos os campos"
       );
     }
 
