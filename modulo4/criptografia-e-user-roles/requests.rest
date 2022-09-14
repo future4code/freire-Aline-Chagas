@@ -1,0 +1,37 @@
+# @name signup
+
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+   "name": "Joãozinho", 
+   "nickname": "jão", 
+   "email": "jão@email.com",
+   "password": "123456789",
+   "role":"NORMAL"
+}
+
+###
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhlYTRhZTUyLWRhYzEtNGQ3YS05MTVmLWZmYTliZTVkYTI2YiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjMwOTUxNzIsImV4cCI6MTY2MzE4MTU3Mn0.deZ1Rm8iq-5juKXfX53w3VQdY40diLeBqwKmljdkSlg
+@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODU2Njg4LTg4YjEtNDUzZS05ZGM5LTNkMDAwOTUxZTdkNiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzA5Mzg1MCwiZXhwIjoxNjYzMTgwMjUwfQ.c0aZD6T-IB5dp48vNAv5auneq7TZU-szI6Dk2CIET6w
+PUT http://localhost:3003/user/edit
+Authorization: {{tokenAdmin}}
+Content-Type: application/json
+
+{
+   "name": "Aline" 
+}
+
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "jão@email.com",
+   "password": "123456789", 
+}
+
+###
+GET http://localhost:3003/user/profile
+Authorization:{{token}}

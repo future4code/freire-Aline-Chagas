@@ -1,0 +1,30 @@
+# @name signup
+
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+
+   "email": "oi@email.com" ,
+   "password": "1234566"
+}
+
+###
+
+@token = 
+PUT http://localhost:3003/user/edit
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+   "name": "" 
+}
+
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+   "email":"testando@email.com",
+   "password":"" 
+}
