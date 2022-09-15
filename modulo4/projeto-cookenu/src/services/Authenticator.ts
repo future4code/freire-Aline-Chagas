@@ -1,10 +1,7 @@
 import * as jwt from "jsonwebtoken"
 import { AuthenticationData } from "../types"
 
-//LEMBRE DE ADICIONAR INFORMAÇÕES NO .ENV
-// caso tenha dúvida, tem um vídeo explicando o Auhenticator no notion:
-
-export class Autheticator {
+export class Authenticator {
 
         public generateToken =  (payload:AuthenticationData)=>{
             const token = jwt.sign(payload,
