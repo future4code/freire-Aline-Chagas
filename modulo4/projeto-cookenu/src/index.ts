@@ -1,10 +1,15 @@
 import app from "./app";
+import signUp from "./endpoints/signUp"
 
 
-app.post("/user/signup", );
-app.put("/user/edit", );
-app.post("/user/login", );
-app.get("/user/profile", )
+app.post("/users/signup",signUp );
+app.post("/users/login", );
+app.get("/users/profile", )
+app.get("/users/:id/profile", )
+
+app.post("/recipe");
+app.get("/recipe/:id")
+
 
 
 

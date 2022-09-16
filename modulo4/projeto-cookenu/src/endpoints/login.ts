@@ -1,36 +1,43 @@
-// 2. **Login**
-    
-//     Basta informar o email e a senha corretamente que o usuário poderá se logar na aplicação. 
-//     Os endpoints de login e cadastro devem retornar **um** **token.**
 
-// - **Login**
-    
-//     **Método:** POST
-//     **Path:** `/login`
-    
-//     **Entradas:**
-    
-//     Body
-    
-//     ```json
-//     {
-//     	"email": "alice@lbn.com",
-//     	"password": "123456"
-//     }
-//     ```
-    
-//     **Saídas**
-    
-//     Body
-    
-//     ```json
-//     {
-//     	"access_token": "token de acesso"
-//     }
-//     ```
-    
-//     **Observações**:
-    
-//     - O seu código deve validar se os dois campos estão completos 
-//     (ou seja se não foram enviados ou se não estão vazios) 
-//     e retornar um erro caso não estejam válidos
+import { Request, Response } from "express";
+import connection from "../connection";
+import { Authenticator } from "../services/Authenticator";
+import { HashManager } from "../services/HashManager";
+
+
+export default async function login(
+   req: Request,
+   res: Response
+): Promise<void>{
+    try {
+
+        const {email,password} = req.body
+
+        if(!email || !password){
+            res.statusCode = 422
+            throw new Error("Preencha seu email e senha")
+        }
+        
+        const [user] = await connection('cookenu_users').where({email})
+
+        if(!user){
+            res.statusCode = 409
+            throw new Error("usuário não encontrado")
+        }
+        
+        const instanceHash = new HashManager()
+        const isCompareHash = await instanceHash.compareHash(password, user.password)
+        if(!isCompareHash){
+            res.statusCode = 409
+            throw new Error("Senha Incorreta")
+        }
+
+        const newToken = new Authenticator()
+        const token = newToken.generateToken({id: user.id, role:user.role})
+
+        res.status(200).send({token})
+        
+    } catch (error:any) {
+        res.status(500).send(error.message)
+    }
+}

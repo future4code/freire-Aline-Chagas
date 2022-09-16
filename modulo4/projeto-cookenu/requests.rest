@@ -1,20 +1,19 @@
 # @name signup
 
-POST http://localhost:3003/user/signup
+POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-   "name": "brAdmin2", 
-   "nickname": "lbr", 
-   "email": "bradmin2@email.com",
-   "password": "labenubr",
-   "role":"ADMIN"
+   "name": "João", 
+   "email": "cookenuadmin@email.com",
+   "password": "123456",
+   "role": "ADMIN"
 }
 
 ###
 
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmM2Y0YzUxLTFjMWMtNGFhZi04NDYwLTQ5YTNlYzU2MGM3MSIsImlhdCI6MTY2Mjk5OTQ2MywiZXhwIjoxNjYzMDg1ODYzfQ.FAvX1OOxTqZN-gzC-ErS0Gb3ru0ZMBYGOWXCF9q7OpE
-@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUzODkwZGQ0LWU0YWUtNDNlMC1hMjUxLTgxMzU2MDhmMTUxNiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzA4MDE2OCwiZXhwIjoxNjYzMTY2NTY4fQ.oxC4rBHY_z6R3pcNdEESJoaF7GfVMI7dqNYHuhDOjyA
+@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyMTkxNjc3LWRiNDctNGFmOC1iZDRkLTFmMzkzYWYyMTViZSIsImlhdCI6MTY2MzI4NTE1OCwiZXhwIjoxNjYzMzcxNTU4fQ.ycLs0sz22CaIasz3fcw95JmucBfxdGSnQ_qq4sELLmo
 
 PUT http://localhost:3003/user/edit
 Authorization: {{tokenAdmin}}
