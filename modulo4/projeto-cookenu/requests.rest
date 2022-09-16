@@ -4,8 +4,8 @@ POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-   "name": "João", 
-   "email": "cookenuadmin@email.com",
+   "name": "Adamastor", 
+   "email": "cookenuser1@email.com",
    "password": "123456",
    "role": "ADMIN"
 }
@@ -13,8 +13,13 @@ Content-Type: application/json
 ###
 
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmM2Y0YzUxLTFjMWMtNGFhZi04NDYwLTQ5YTNlYzU2MGM3MSIsImlhdCI6MTY2Mjk5OTQ2MywiZXhwIjoxNjYzMDg1ODYzfQ.FAvX1OOxTqZN-gzC-ErS0Gb3ru0ZMBYGOWXCF9q7OpE
-@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyMTkxNjc3LWRiNDctNGFmOC1iZDRkLTFmMzkzYWYyMTViZSIsImlhdCI6MTY2MzI4NTE1OCwiZXhwIjoxNjYzMzcxNTU4fQ.ycLs0sz22CaIasz3fcw95JmucBfxdGSnQ_qq4sELLmo
+@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyNDI5MTQyLTcxYTctNGZmYS05ZTM1LTIzYWMxYWQ1ZDM5YyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzI5NjQ3NywiZXhwIjoxNjY1ODg4NDc3fQ.Gv98I36S-wggMP7R8GwuO1-7wBuHwFEJtQUKtUXIsGM
 
+###
+GET http://localhost:3003/users/profile
+Authorization{{tokenAdmin}}
+
+###
 PUT http://localhost:3003/user/edit
 Authorization: {{tokenAdmin}}
 Content-Type: application/json
@@ -31,7 +36,3 @@ Content-Type: application/json
    "email":"cookenuadmin@email.com",
    "password":"123456" 
 }
-
-###
-GET http://localhost:3003/user/profile
-Authorization{{tokenAdmin}}

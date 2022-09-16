@@ -1,11 +1,12 @@
+import userClass from "./endpoints/userClass";
 import app from "./app";
-import login from "./endpoints/login";
-import signUp from "./endpoints/signUp"
 
 
-app.post("/users/signup",signUp );
-app.post("/users/login", login );
-app.get("/users/profile", )
+const userController = new userClass
+
+app.post("/users/signup",userController.signUp );
+app.post("/users/login",userController.login );
+app.get("/users/profile",userController.getProfile)
 app.get("/users/:id/profile", )
 
 app.post("/recipe");
