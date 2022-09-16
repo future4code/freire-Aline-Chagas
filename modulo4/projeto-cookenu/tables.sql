@@ -11,9 +11,11 @@ CREATE TABLE IF NOT EXISTS cookenu_recipes (
     title VARCHAR(64) NOT NULL,
     description VARCHAR(10000),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    author_id VARCHAR(64),
+    author_id VARCHAR(64) NOT NULL,
     FOREIGN KEY (author_id) REFERENCES cookenu_users(id)
 );
 
 ALTER TABLE cookenu_users
 ADD role ENUM ("NORMAL", "ADMIN") DEFAULT "NORMAL";
+
+DROP TABLE cookenu_recipes;

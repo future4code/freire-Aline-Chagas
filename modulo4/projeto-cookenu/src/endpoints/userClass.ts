@@ -6,7 +6,6 @@ import { Authenticator } from "../services/Authenticator";
 import { GenerateId } from "../services/GenerateId";
 import { HashManager } from "../services/HashManager";
 
-
 export default class userClass{ 
 
     async login(req:Request, res:Response){
@@ -102,6 +101,7 @@ export default class userClass{
             .send({ message: error.message || error.sqlMessage });
         }
     }
+
 async getOtherUserProfile(req:Request, res:Response){
     try {
         const token = req.headers.authorization
@@ -122,4 +122,5 @@ async getOtherUserProfile(req:Request, res:Response){
         .send({ message: error.message || error.sqlMessage });
     }
 }
+
 }

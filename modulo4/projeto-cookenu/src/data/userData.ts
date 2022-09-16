@@ -22,6 +22,7 @@ async loginUser(email:string){
     const result = await connectionDB.connection(UserData.tableName).where({email})
     return result[0]
 }
+
 async getUserById(id:string){
     const result = await connectionDB.connection(UserData.tableName)
     .select("*").where({id})

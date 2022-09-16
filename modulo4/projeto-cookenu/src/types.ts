@@ -7,20 +7,20 @@ export type user = {
 
 };
 
+export type AuthenticationData = {
+  id:string,
+  role:userRole
+};
+
+export enum userRole {
+  NORMAL = "NORMAL",
+  ADMIN = "ADMIN" 
+}
+
 export type recipe = {
   id: string;
   title: string;
   description: string;
-  createdAt: string;
-  authorId: string;
-};
-export type AuthenticationData = {
-  id: string;
-  role:userRole
-
-};
- 
-export enum userRole {
-  NORMAL = "NORMAL",
-  ADMIN = "ADMIN" 
+  created_at: string;
+  author_id: string;
 }

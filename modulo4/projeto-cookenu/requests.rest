@@ -29,11 +29,18 @@ Authorization: {{tokenAdmin}}
 GET http://localhost:3003/user/:id
 Authorization: {{tokenAdmin}}
 
+
 ###
-PUT http://localhost:3003/user/edit
+POST http://localhost:3003/recipe
 Authorization: {{tokenAdmin}}
 Content-Type: application/json
 
 {
-   "name": "" 
+   "title": "água quente",
+	"description": "coloque a água na panela, ligue o fogo com a ajuda de um adulto, e espere a água ferver"
 }
+
+
+GET http://localhost:3003/recipe/e33bc54b-9a96-4f8d-abda-22bbf42448cf
+Authorization: {{tokenAdmin}}
+
