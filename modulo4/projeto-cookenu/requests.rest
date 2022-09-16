@@ -1,23 +1,33 @@
 # @name signup
 
-POST http://localhost:3003/users/signup
+POST http://localhost:3003/signup
 Content-Type: application/json
 
 {
-   "name": "Adamastor", 
-   "email": "cookenuser1@email.com",
+   "name": "Cookie", 
+   "email": "cookienuser@email.com",
    "password": "123456",
    "role": "ADMIN"
 }
-
 ###
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+   "email":"cookenuadmin@email.com",
+   "password":"123456" 
+}
 
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmM2Y0YzUxLTFjMWMtNGFhZi04NDYwLTQ5YTNlYzU2MGM3MSIsImlhdCI6MTY2Mjk5OTQ2MywiZXhwIjoxNjYzMDg1ODYzfQ.FAvX1OOxTqZN-gzC-ErS0Gb3ru0ZMBYGOWXCF9q7OpE
-@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyNDI5MTQyLTcxYTctNGZmYS05ZTM1LTIzYWMxYWQ1ZDM5YyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzI5NjQ3NywiZXhwIjoxNjY1ODg4NDc3fQ.Gv98I36S-wggMP7R8GwuO1-7wBuHwFEJtQUKtUXIsGM
+@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYxY2IxMDU2LWQzNTgtNGE1My1hMzM0LTE5ODYyNjkyYzU1MCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzM0MTEwMSwiZXhwIjoxNjY1OTMzMTAxfQ.kO3TtYth2-P_aD-9ke9uSXrH05Jc_aHTTi1-dHDSJwM
 
 ###
-GET http://localhost:3003/users/profile
-Authorization{{tokenAdmin}}
+GET http://localhost:3003/user/profile
+Authorization: {{tokenAdmin}}
+
+###
+GET http://localhost:3003/user/:id
+Authorization: {{tokenAdmin}}
 
 ###
 PUT http://localhost:3003/user/edit
@@ -25,14 +35,5 @@ Authorization: {{tokenAdmin}}
 Content-Type: application/json
 
 {
-   "name": "Bruno Amorim" 
-}
-
-###
-POST http://localhost:3003/users/login
-Content-Type: application/json
-
-{
-   "email":"cookenuadmin@email.com",
-   "password":"123456" 
+   "name": "" 
 }

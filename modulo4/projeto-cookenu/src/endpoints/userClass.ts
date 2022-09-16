@@ -1,11 +1,14 @@
 import { Request, Response } from "express";
-import connection from "../connection";
+import { connectionDB } from "../data/connectionDB";
+import UserData from "../data/userData";
+import User from "../model/user";
 import { Authenticator } from "../services/Authenticator";
 import { GenerateId } from "../services/GenerateId";
 import { HashManager } from "../services/HashManager";
-import { user } from "../types";
 
-export default class userClass{
+
+export default class userClass{ 
+
     async login(req:Request, res:Response){
         try {
             const {email,password} = req.body
@@ -14,9 +17,9 @@ export default class userClass{
                 res.statusCode = 422
                 throw new Error("Preencha seu email e senha")
             }
-            
-            const [user] = await connection('cookenu_users').where({email})
-    
+            const connection = new UserData()
+            const user = await connection.loginUser(email)
+
             if(!user){
                 res.statusCode = 409
                 throw new Error("usuário não encontrado")
@@ -38,9 +41,11 @@ export default class userClass{
         .send({ message: error.message || error.sqlMessage });
         }
     }
+
     async signUp(req:Request, res:Response){
+
         try {
-            const { name, email, password, role } = req.body;
+            const { name, email, password, role} = req.body;
 
     if (!name  || !email || !password ||!role) {
       res.statusCode = 422;
@@ -49,7 +54,8 @@ export default class userClass{
       );
     }
 
-    const [user] = await connection("to_do_list_users").where({ email });
+    const connection = new UserData()
+    const user = await connection.loginUser(email)
 
     if (user) {
       res.statusCode = 409;
@@ -62,32 +68,58 @@ export default class userClass{
     const instanceHash = new HashManager();
     const hash = await instanceHash.generateHash(password);
 
-    const newUser: user = { id, name,  email, password: hash, role };
+    const newUserInstance = new User(id, name,  email, hash, role)
 
-    await connection("cookenu_users").insert(newUser);
-
+   const insertUserData = new UserData()
+   const result = await insertUserData.signUp(newUserInstance)
+   
     const newToken = new Authenticator();
     const token = newToken.generateToken({ id: id, role:role});
 
-    res.status(201).send({ newUser, token });
+    res.status(201).send({ newUserInstance, token });
         } catch (error:any) {
             res.status(500)
             .send({ message: error.message || error.sqlMessage });
             }
     }
+
     async getProfile(req:Request, res:Response){
         try {
             const token = req.headers.authorization
             if(!token){
                 throw new Error("token inválido")
             }
-            const id=new Authenticator().getTokenData(token)
-            console.log(token)
-            const result = await connection().select("*").from("cookenu_users").where(id)
-            console.log(result[0])
+            const id:any =new Authenticator().getTokenData(token)
+            console.log(id)
+
+            const userData = new UserData()
+            const user = await userData.getUserById(id)
+            console.log(user)
+            res.status(201).send({id:user.id,name:user.name, user:user.email});
+
         } catch (error:any) {
             res.status(500)
             .send({ message: error.message || error.sqlMessage });
         }
     }
+async getOtherUserProfile(req:Request, res:Response){
+    try {
+        const token = req.headers.authorization
+        const idUser = req.params.id
+        if(!token){
+            throw new Error("token inválido")
+        }
+        const id:any =new Authenticator().getTokenData(token)
+        console.log(id)
+
+        const userData = new UserData()
+        const user = await userData.getUserById(idUser)
+        console.log(user)
+        res.status(201).send({id:user.id,name:user.name, user:user.email});
+
+    } catch (error:any) {
+        res.status(500)
+        .send({ message: error.message || error.sqlMessage });
+    }
+}
 }
