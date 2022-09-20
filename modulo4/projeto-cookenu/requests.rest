@@ -1,0 +1,46 @@
+# @name signup
+
+POST http://localhost:3003/signup
+Content-Type: application/json
+
+{
+   "name": "Cookie", 
+   "email": "cookienuser@email.com",
+   "password": "123456",
+   "role": "ADMIN"
+}
+###
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+   "email":"cookenuadmin@email.com",
+   "password":"123456" 
+}
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmM2Y0YzUxLTFjMWMtNGFhZi04NDYwLTQ5YTNlYzU2MGM3MSIsImlhdCI6MTY2Mjk5OTQ2MywiZXhwIjoxNjYzMDg1ODYzfQ.FAvX1OOxTqZN-gzC-ErS0Gb3ru0ZMBYGOWXCF9q7OpE
+@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYxY2IxMDU2LWQzNTgtNGE1My1hMzM0LTE5ODYyNjkyYzU1MCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzM0MTEwMSwiZXhwIjoxNjY1OTMzMTAxfQ.kO3TtYth2-P_aD-9ke9uSXrH05Jc_aHTTi1-dHDSJwM
+
+###
+GET http://localhost:3003/user/profile
+Authorization: {{tokenAdmin}}
+
+###
+GET http://localhost:3003/user/:id
+Authorization: {{tokenAdmin}}
+
+
+###
+POST https://projetocookenu.herokuapp.com/recipe
+Authorization: {{tokenAdmin}}
+Content-Type: application/json
+
+{
+   "title": "água quente",
+	"description": "coloque a água na panela, ligue o fogo com a ajuda de um adulto, e espere a água ferver"
+}
+
+###
+GET https://projetocookenu.herokuapp.com/recipe/e33bc54b-9a96-4f8d-abda-22bbf42448cf
+Authorization: {{tokenAdmin}}
+
