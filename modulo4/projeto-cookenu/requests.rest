@@ -31,7 +31,7 @@ Authorization: {{tokenAdmin}}
 
 
 ###
-POST http://localhost:3003/recipe
+POST https://projetocookenu.herokuapp.com/recipe
 Authorization: {{tokenAdmin}}
 Content-Type: application/json
 
@@ -40,7 +40,7 @@ Content-Type: application/json
 	"description": "coloque a água na panela, ligue o fogo com a ajuda de um adulto, e espere a água ferver"
 }
 
-
-GET http://localhost:3003/recipe/e33bc54b-9a96-4f8d-abda-22bbf42448cf
+###
+GET https://projetocookenu.herokuapp.com/recipe/e33bc54b-9a96-4f8d-abda-22bbf42448cf
 Authorization: {{tokenAdmin}}
 

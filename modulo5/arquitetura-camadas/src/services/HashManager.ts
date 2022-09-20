@@ -9,7 +9,7 @@ export class HashManager {
         return hash
     }
 
-    public compare = async (plaintext: string, hash: string) => {
+    public compareHash = async (plaintext: string, hash: string) => {
         return bcrypt.compare(plaintext, hash)
     }
 }

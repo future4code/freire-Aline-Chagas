@@ -42,13 +42,13 @@ export default class recipeClass{
         if(!token){
             throw new Error("token inválido")
         }
+
         const id:any = new Authenticator().getTokenData(token)
-        console.log(id)
 
         const recipeData = new RecipeData()
         const recipe = await recipeData.getRecipeById(idRecipe)
-        console.log(recipe)
-        res.status(201).send({id:recipe.id,title:recipe.title,description:recipe.description, created_at:recipe.created_at});
+        res.status(200)
+        .send({id:recipe.id,title:recipe.title,description:recipe.description, created_at:recipe.created_at});
 
         } catch (error:any) {
             res.status(500)

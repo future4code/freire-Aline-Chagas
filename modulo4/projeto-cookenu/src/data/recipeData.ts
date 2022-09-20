@@ -1,5 +1,4 @@
 import Recipe from "../model/recipe";
-import { Authenticator } from "../services/Authenticator";
 import { connectionDB } from "./connectionDB";
 
 class RecipeData extends connectionDB {

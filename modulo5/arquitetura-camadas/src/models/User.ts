@@ -59,4 +59,14 @@ export class User {
     public setRole = (newRole: USER_ROLES) => {
         this.role = newRole
     }
+
+    static toUserModel(user: any): User {
+        return new User(
+            user.id,
+            user.name,
+            user.email,
+            user.password,
+            user.role
+        )
+    }
 }
