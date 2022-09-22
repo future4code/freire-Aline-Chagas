@@ -18,4 +18,14 @@ Content-Type: application/json
 }
 
 ###
-POST 
+
+POST http://localhost:3003/posts/create-post
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2Mzg4MjEzNCwiZXhwIjoxNjYzOTY4NTM0fQ.ib-GxaTi_4hUtb9rOLLTeYodkqPYfJkCP2EFREvuToA
+Content-Type: application/json
+
+{
+   "content": "fui no pé de manga catar jabuticaba"
+}
+
+###
+GET http://localhost:3003/posts/get-post

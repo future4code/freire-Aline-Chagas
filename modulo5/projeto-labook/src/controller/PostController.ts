@@ -8,9 +8,10 @@ export class PostController {
 
     public createPost = async (req:Request, res:Response)=>{
         try {
-            
+        
             const input = {
-                content: req.body.content
+                content: req.body.content,
+                token: req.headers.authorization
             }
          
             const response = await this.postBusiness.createPost(input)
@@ -20,7 +21,16 @@ export class PostController {
             res.status(400).send({ message: error.message })
         }
     }
+    
+    public getPost = async (req:Request, res:Response)=>{
+        try {
+            
+        } catch (error:any) {
+            res.status(400).send({ message: error.message })
+        }
     }
+    }
+    
    // public getPost = async (req: Request, res: Response) => {
     //     try {
     //         const input: any = {
@@ -40,4 +50,3 @@ export class PostController {
     //     }
     // }
 
-}
