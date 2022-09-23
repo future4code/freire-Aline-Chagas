@@ -32,7 +32,7 @@ export class UserController {
             }
 
             const response = await this.userBusiness.login(input)
-            console.log(input)
+           
 
             res.status(200).send(response)
         } catch (error:any) {

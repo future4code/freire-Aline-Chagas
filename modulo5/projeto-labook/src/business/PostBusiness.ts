@@ -33,8 +33,6 @@ export class PostBusiness {
 
         const user_id = payload.id
 
-        // const likes = 0
-
         const post = new Post(id,content, user_id)
         await this.postDatabase.createPost(post)
         const response = {
@@ -43,7 +41,19 @@ export class PostBusiness {
 
         return response
     }
-    getPost = async()=>{
-        
+
+    getPost = async(input:string)=>{
+
+        const payload = this.authenticator.getTokenPayload(input)
+        if(!payload){
+            throw new ParamsError()
+        }
+
+        await this.postDatabase.getPost(input)
+        const response = {
+            message: "Post criado com sucesso"
+        }
+
+        return response
     }
     }

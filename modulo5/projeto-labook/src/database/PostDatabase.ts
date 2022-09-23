@@ -15,4 +15,29 @@ export class PostDatabase extends BaseDatabase {
         })
     }
 
+    public getPost = async (token:string) => {
+      
+        const postDB: IPostDB[] = await BaseDatabase
+            .connection(PostDatabase.TABLE_POSTS)
+            .select("*")
+          
+        return postDB
+    }
+
+    // public findById = async (id: string) => {
+    //     const usersDB: IUserDB[] = await BaseDatabase
+    //         .connection(UserDatabase.TABLE_USERS)
+    //         .select()
+    //         .where({ id })
+
+    //     return usersDB[0]
+    // }
+
+    // public deletePost = async (id: string) => {
+    //     await BaseDatabase
+    //         .connection(PostDatabase.TABLE_POSTS)
+    //         .delete()
+    //         .where({ id })
+    // }
+
 }

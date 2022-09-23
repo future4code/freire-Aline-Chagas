@@ -24,7 +24,13 @@ export class PostController {
     
     public getPost = async (req:Request, res:Response)=>{
         try {
-            
+            const input = {
+                token: req.headers.authorization
+            }
+
+            const response = await this.postBusiness.getPost(input)
+            res.status(200).send(response)
+
         } catch (error:any) {
             res.status(400).send({ message: error.message })
         }
