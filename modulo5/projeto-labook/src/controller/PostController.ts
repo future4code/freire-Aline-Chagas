@@ -24,35 +24,54 @@ export class PostController {
     
     public getPost = async (req:Request, res:Response)=>{
         try {
-            const input = {
-                token: req.headers.authorization
-            }
-
-            const response = await this.postBusiness.getPost(input)
+            const token = req.headers.authorization as string
+            
+            const response = await this.postBusiness.getPost(token)
             res.status(200).send(response)
 
         } catch (error:any) {
             res.status(400).send({ message: error.message })
         }
     }
+
+    public deletePost = async (req:Request, res:Response)=>{
+        try {
+            const token = req.headers.authorization as string
+            const id = req.params.id as string
+            
+            const response = await this.postBusiness.deletePost(token,id)
+            res.status(200).send(response)
+
+        } catch (error:any) {
+            res.status(400).send({ message: error.message })
+        }
+    }
+
+    public likePost = async (req:Request, res:Response)=>{
+        try {
+            const token = req.headers.authorization as string
+            const post_id = req.body.id as string
+            
+            const response = await this.postBusiness.likePost(token,post_id)
+            res.status(200).send(response)
+
+        } catch (error:any) {
+            res.status(400).send({ message: error.message })
+        }
+    }
+    public dislikePost = async (req:Request, res:Response)=>{
+        try {
+            const token = req.headers.authorization as string
+            const post_id = req.params.id as string
+            
+            const response = await this.postBusiness.dislikePost(token,post_id)
+            res.status(200).send(response)
+
+        } catch (error:any) {
+            res.status(400).send({ message: error.message })
+        }
+    }
+
     }
     
-   // public getPost = async (req: Request, res: Response) => {
-    //     try {
-    //         const input: any = {
-    //             token: req.headers.authorization,
-    //             search: req.query.search as string,
-    //             order: req.query.order as string,
-    //             sort: req.query.sort as string,
-    //             limit: req.query.limit as string,
-    //             page: req.query.page as string
-    //         }
-
-    //         const response = await this.userBusiness.getUsers(input)
-
-    //         res.status(200).send(response)
-    //     } catch (error:any) {
-    //         res.status(400).send({ message: error.message })
-    //     }
-    // }
-
+   

@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { PostBusiness } from "../business/PostBusiness"
-import { IPostDB, Post } from "../models/Post"
+import { ILikeDB, IPostDB, Post } from "../models/Post"
 import { BaseDatabase } from "./BaseDatabase"
 
 export class PostDatabase extends BaseDatabase {
@@ -23,21 +23,37 @@ export class PostDatabase extends BaseDatabase {
           
         return postDB
     }
+   
+    public deletePost = async (id:string) => {
+        await BaseDatabase
+            .connection(PostDatabase.TABLE_POSTS)
+            .delete()
+            .where({id})
+            return("post excluído com sucesso!")
+    }
 
-    // public findById = async (id: string) => {
-    //     const usersDB: IUserDB[] = await BaseDatabase
-    //         .connection(UserDatabase.TABLE_USERS)
-    //         .select()
-    //         .where({ id })
+    likePost = async(input:ILikeDB) =>{
+        await BaseDatabase
+        .connection(PostDatabase.TABLE_LIKES)
+        .insert(input)
 
-    //     return usersDB[0]
-    // }
-
-    // public deletePost = async (id: string) => {
-    //     await BaseDatabase
-    //         .connection(PostDatabase.TABLE_POSTS)
-    //         .delete()
-    //         .where({ id })
-    // }
+        return("você curtiu o post") 
+    }
+    getLike = async(id:string, token:string) =>{
+        const result = await BaseDatabase
+        .connection(PostDatabase.TABLE_LIKES)
+        .select("*")
+        .where("user_id",`${token}`)
+        .andWhere("id",`${id}`)
+        return result
+    }
+    dislikePost = async(token:string, post_id:string) =>{
+        await BaseDatabase
+        .connection(PostDatabase.TABLE_LIKES)
+        .delete()
+        .where("user_id",`${token}`)
+        .andWhere("post_id",`${post_id}`)
+        return("você descurtiu o post") 
+    }
 
 }

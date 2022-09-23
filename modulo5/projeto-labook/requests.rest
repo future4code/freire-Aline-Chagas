@@ -30,3 +30,20 @@ Content-Type: application/json
 ###
 GET http://localhost:3003/posts/get-post
 Authorization: {{login.response.body.token}}
+
+###
+DELETE http://localhost:3003/posts/delete-post/042b89be-5b3c-4f89-9520-5cc608dd6d41
+Authorization: {{login.response.body.token}}
+
+###
+POST http://localhost:3003/posts/like
+Authorization: {{login.response.body.token}}
+Content-Type: application/json
+
+{
+   "id": "203"
+}
+
+###
+DELETE http://localhost:3003/posts/dislike/203
+Authorization: {{login.response.body.token}}
