@@ -39,12 +39,12 @@ export class PostDatabase extends BaseDatabase {
 
         return("você curtiu o post") 
     }
-    getLike = async(id:string, token:string) =>{
+    getLike = async(token:string,id:string) =>{
         const result = await BaseDatabase
         .connection(PostDatabase.TABLE_LIKES)
         .select("*")
         .where("user_id",`${token}`)
-        .andWhere("id",`${id}`)
+        .andWhere("post_id",`${id}`)
         return result
     }
     dislikePost = async(token:string, post_id:string) =>{

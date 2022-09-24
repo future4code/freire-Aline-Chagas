@@ -100,13 +100,13 @@ export class PostBusiness {
         
         const payload = this.authenticator.getTokenPayload(token)
         if(!payload){
-            throw new Error("tá faltando algo")
+            throw new Error("falta o payload")
         }
         if(!post_id){
             throw new Error("id Inválido")
         }
         const validateLike = await this.postDatabase.getLike(payload.id, post_id)
-        console.log(validateLike)
+
         if(validateLike.length < 1){
             throw new Error("você não curtiu este post")
         }
