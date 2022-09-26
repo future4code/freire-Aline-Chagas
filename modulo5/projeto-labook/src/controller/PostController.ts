@@ -59,6 +59,7 @@ export class PostController {
             res.status(400).send({ message: error.message })
         }
     }
+    
     public dislikePost = async (req:Request, res:Response)=>{
         try {
             const token = req.headers.authorization as string
