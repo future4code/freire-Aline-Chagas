@@ -1,0 +1,36 @@
+### 1) Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "BrunoLbn",
+    "email": "bramlb@gmail.com",
+    "password": "abc123",
+    "role": "ADMIN"
+}
+
+### 2) Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "bram@gmail.com",
+    "password": "abc123"
+}
+
+### 3) Get users
+GET http://localhost:3003/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk5ZDExZTZlLWEwZjQtNDk4Ni1hMTExLWVmOWE3NWFiNGE1ZSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjM2NzgyMDMsImV4cCI6MTY2Mzc2NDYwM30.O6ubKWbJZmiwVEEsgKeD6ECkDmbIXAbXUxM5TiQ3uwY
+
+### 4) Delete user
+DELETE http://localhost:3003/users/0eda597d-cd2a-4c86-b5e6-0214058d5e6c
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk5ZDExZTZlLWEwZjQtNDk4Ni1hMTExLWVmOWE3NWFiNGE1ZSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjM2NzgyMDMsImV4cCI6MTY2Mzc2NDYwM30.O6ubKWbJZmiwVEEsgKeD6ECkDmbIXAbXUxM5TiQ3uwY
+
+### EXTRA) Edit user
+PUT http://localhost:3003/users/bb9b7ee8-ae4b-4bd1-9bd6-e7e21594399b
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk5ZDExZTZlLWEwZjQtNDk4Ni1hMTExLWVmOWE3NWFiNGE1ZSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjM2NzgyMDMsImV4cCI6MTY2Mzc2NDYwM30.O6ubKWbJZmiwVEEsgKeD6ECkDmbIXAbXUxM5TiQ3uwY
+Content-Type: application/json
+
+{
+    "name": "Astrodev3"
+}

@@ -1,0 +1,49 @@
+### 
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "Aline",
+    "email": "aline@gmail.com",
+    "password": "abc123"
+}
+
+###
+# @name login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
+}
+
+###
+POST http://localhost:3003/posts/create-post
+Authorization: {{login.response.body.token}}
+Content-Type: application/json
+
+{
+   "content": "mais um, só pra testar"
+}
+
+###
+GET http://localhost:3003/posts/get-post
+Authorization: {{login.response.body.token}}
+
+###
+DELETE http://localhost:3003/posts/delete-post/042b89be-5b3c-4f89-9520-5cc608dd6d41
+Authorization: {{login.response.body.token}}
+
+###
+POST http://localhost:3003/posts/like
+Authorization: {{login.response.body.token}}
+Content-Type: application/json
+
+{
+   "id": "203"
+}
+
+###
+DELETE http://localhost:3003/posts/dislike/203
+Authorization: {{login.response.body.token}}
