@@ -44,7 +44,7 @@ describe("Olá, teste", () => {
   test("exercicio 7", () => {
   const array = [10,4,7,6]
   
-  expect(mediaNumber(array)).toBeGreaterThan(-)
+  expect(mediaNumber(array)).toBeGreaterThan()
  
   });
 
