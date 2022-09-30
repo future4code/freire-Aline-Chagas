@@ -1,3 +1,34 @@
 ### Endpoint de teste
 GET http://localhost:3003/ping
 
+
+###
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "aline",
+    "email": "aline@gmail.com",
+    "password": "aline89"
+}
+
+###
+# @name login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
+}
+
+###
+POST http://localhost:3003/shows/create-show
+Authorization: {{login.response.body.token}}
+Content-Type: application/json
+
+{
+   "band": "Coldplay",
+   "starts_at": "2022-12-05"
+}
+

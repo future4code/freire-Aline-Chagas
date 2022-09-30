@@ -15,5 +15,9 @@ const userController = new UserController(
         new HashManager(),
         new Authenticator()
     )
-)
+
+    )
+    
+    userRouter.post("/signup", userController.signup)
+    userRouter.post("/login", userController.login)
 
