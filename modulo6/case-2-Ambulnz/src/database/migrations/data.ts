@@ -1,25 +1,75 @@
-import { IUserDB, USER_ROLES } from "../../models/User"
+import { IPizzaDB, IIngredientsDB, IpizzaIngredientsDB } from "../../models/Pizza"
 
-export const users: IUserDB[] = [
+
+export const pizzasSeed: IPizzaDB[] = [
     {
-        id: "101",
-        name: "Astrodev",
-        email: "astrodev@gmail.com",
-        password: "$2a$12$RBAWOHpUvGTE.MEeIohAzec9tlVqtNA/x2PMPt/Hrt0vI437cQdJC", // bananinha
-        role: USER_ROLES.ADMIN
+      "name": "Margherita",
+      "price": 5
+     
     },
-    {
-        id: "102",
-        name: "Fulano",
-        email: "fulano@gmail.com",
-        password: "$2a$12$PULtVNlAll87D6E8pR/0HO9vbzVDPaUMA89rc5cNmYoAAepbwmkcO", // qwerty00
-        role: USER_ROLES.NORMAL
+
+      {"name": "Bufala",
+      "price": 6
+      
     },
+
     {
-        id: "103",
-        name: "Ciclana",
-        email: "ciclana@gmail.com",
-        password: "$2a$12$LkWMqS3oPhP2iVMcZOVvWer9ahUPulxjB0EA4TWPxWaRuEEfYGu/i", // asdfg123
-        role: USER_ROLES.NORMAL
+      "name": "Romana",
+      "price": 5
+    },
+
+    {
+      "name": "Diavola",
+      "price": 7.5
+    },
+
+    {
+      "name": "Pizza Bianca",
+      "price": 5
     }
+  ]
+
+ export const ingredientsSeed: IIngredientsDB[] = [
+    {
+        "name": "tomato"
+    },
+    {
+        "name": "mozzarella"
+    },
+    {
+        "name": "mozarella di bufala"
+    },
+    {
+        "name": "anchovies"
+    },
+    {
+        "name": "oregano"
+    },
+    {
+        "name": "oil"
+    {
+        "name": "spicy salami"
+    }
+]
+ 
+
+ export const pizzasIngredientsSeed: IpizzaIngredientsDB[] =[
+
+  {
+    "pizza_name": "Margherita",
+    "ingredient_name":"tomato"
+},
+  {
+    "pizza_name": "Margherita",
+    "ingredient_name":"mozzarella"
+},
+  {
+    "pizza_name": "Bufala",
+    "ingredient_name":"mozzarella di bufala"
+},
+  {
+    "pizza_name": "Bufala",
+    "ingredient_name":"tomato"
+},
+ 
 ]
