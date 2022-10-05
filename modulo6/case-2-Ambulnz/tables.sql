@@ -1,47 +1,135 @@
 -- Active: 1662659335013@@35.226.146.116@3306@freire-aline-chagas
-CREATE TABLE IF NOT EXISTS Amb_pizzas(
-    NAME VARCHAR(255) PRIMARY KEY,
-    PRICE DECIMAL(3,2) NOT NULL
-);
-CREATE TABLE IF NOT EXISTS Amb_ingredients(
-    NAME VARCHAR(255) PRIMARY KEY 
-);
-CREATE TABLE IF NOT EXISTS Amb_pizzas_ingredients(
-    PIZZA_NAME VARCHAR(255) NOT NULL,
-    INGREDIENT_NAME VARCHAR(255) NOT NULL,
-    FOREIGN KEY (PIZZA_NAME) REFERENCES Amb_pizzas(name),
-    FOREIGN KEY (INGREDIENT_NAME) REFERENCES Amb_ingredients(name)
+-- Entities
+
+-- -- Amb_Pizzas
+-- -- Amb_Ingredients
+-- -- Amb_Pizzas_Ingredients
+-- -- Amb_Orders
+-- -- Amb_Order_Items
+-- -- Amb_Orders_Order_Items
+
+DROP TABLE IF EXISTS Amb_Orders_Order_Items;
+DROP TABLE IF EXISTS Amb_Order_Items;
+DROP TABLE IF EXISTS Amb_Orders;
+DROP TABLE IF EXISTS Amb_Pizzas_Ingredients;
+DROP TABLE IF EXISTS Amb_Ingredients;
+DROP TABLE IF EXISTS Amb_Pizzas;
+
+CREATE TABLE IF NOT EXISTS Amb_Pizzas (
+	name VARCHAR(255) PRIMARY KEY,
+    price DECIMAL(3,2) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS  Amb_order_item(
-ID MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
-NAME VARCHAR (255) NOT NULL,
-QUANTITY TINYINT,
-FOREIGN KEY (NAME) REFERENCES Amb_pizzas(name)
+CREATE TABLE IF NOT EXISTS Amb_Ingredients (
+	name VARCHAR(255) PRIMARY KEY
 );
 
-CREATE TABLE IF NOT EXISTS  Amb_orders(
-id VARCHAR(255) NOT NULL
+CREATE TABLE IF NOT EXISTS Amb_Pizzas_Ingredients (
+	pizza_name VARCHAR(255) NOT NULL,
+    ingredient_name VARCHAR(255) NOT NULL,
+    FOREIGN KEY (pizza_name) REFERENCES Amb_Pizzas (name),
+    FOREIGN KEY (ingredient_name) REFERENCES Amb_Ingredients (name)
 );
 
-CREATE TABLE IF NOT EXISTS Amb_orders_order_item(
+CREATE TABLE IF NOT EXISTS Amb_Orders (
+	id VARCHAR(255) PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS Amb_Order_Items (
+	id VARCHAR(255) PRIMARY KEY,
+    pizza_name VARCHAR(255) NOT NULL,
+    quantity TINYINT,
     order_id VARCHAR(255) NOT NULL,
-    item_id VARCHAR(255) NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES Amb_order_item(name)
-);
-INSERT INTO `Amb_pizzas_ingredients` VALUES(
-"Bufala",
-"Mozzarella di bufala"
+    FOREIGN KEY (pizza_name) REFERENCES Amb_Pizzas (name),
+    FOREIGN KEY (order_id) REFERENCES Amb_Orders (id)
 );
 
+-- CREATE TABLE IF NOT EXISTS Amb_Orders_Order_Items (
+-- 	order_id VARCHAR(255) NOT NULL,
+--   item_id VARCHAR(255) NOT NULL,
+--   FOREIGN KEY (order_id) REFERENCES Amb_Orders (id),
+--   FOREIGN KEY (item_id) REFERENCES Amb_Order_Items (id)
+-- );
 
-SELECT * FROM `Amb_pizzas`
-JOIN `Amb_pizzas_ingredients` 
-ON Amb_pizzas_ingredients.PIZZA_NAME = Amb_pizzas.NAME 
-WHERE NAME = "Margherita";
+INSERT INTO Amb_Pizzas VALUES (
+	"Margherita",
+    5
+);
 
-SELECT * FROM `Amb_orders`
-JOIN `Amb_orders_order_item` 
-ON Amb_orders_order_item
-WHERE NAME = "Margherita";
+INSERT INTO Amb_Pizzas VALUES (
+	"Bufala",
+    6
+);
 
+INSERT INTO Amb_Ingredients VALUES (
+	"tomato"
+);
+
+INSERT INTO Amb_Ingredients VALUES (
+	"mozzarella"
+);
+
+INSERT INTO Amb_Ingredients VALUES (
+	"mozarella di bufala"
+);
+
+INSERT INTO Amb_Pizzas_Ingredients VALUES (
+	"Margherita",
+    "tomato"
+);
+
+INSERT INTO Amb_Pizzas_Ingredients VALUES (
+	"Margherita",
+    "mozzarella"
+);
+
+INSERT INTO Amb_Pizzas_Ingredients VALUES (
+	"Bufala",
+    "tomato"
+);
+
+INSERT INTO Amb_Pizzas_Ingredients VALUES (
+	"Bufala",
+    "mozarella di bufala"
+);
+
+SELECT * FROM Amb_Pizzas
+JOIN Amb_Pizzas_Ingredients ON Amb_Pizzas_Ingredients.pizza_name = Amb_Pizzas.name
+WHERE name = "Margherita";
+
+SELECT * FROM Amb_Pizzas
+JOIN Amb_Pizzas_Ingredients ON Amb_Pizzas_Ingredients.pizza_name = Amb_Pizzas.name
+WHERE name = "Bufala";
+
+INSERT INTO Amb_Orders VALUES (
+	"mesa-1"
+);
+
+INSERT INTO Amb_Order_Items VALUES (
+	"pedido-1",
+    "Margherita",
+    2,
+    "mesa-1"
+);
+
+INSERT INTO Amb_Order_Items VALUES (
+	"pedido-2",
+    "Bufala",
+    1,
+    "mesa-1"
+);
+
+-- INSERT INTO Amb_Orders_Order_Items VALUES (
+-- 	"p1",
+--  "order-item-1"
+-- );
+
+-- INSERT INTO Amb_Orders_Order_Items VALUES (
+-- 	"p1",
+--  "order-item-2"
+-- );
+
+SELECT * FROM Amb_Orders
+JOIN Amb_Order_Items ON Amb_Order_Items.order_id = Amb_Orders.id
+JOIN Amb_Pizzas ON Amb_Order_Items.pizza_name = Amb_Pizzas.name
+WHERE Amb_Orders.id = "mesa-1";
