@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import {CardContext} from"../Context/CardContext"
-import { StyleDiv } from "./styledCard"
+import { ContainerCards, StyledImg, StyleDiv, TextStyle } from "./styledCard"
 
 const Card = () => {
     const {card, backCard, imagePath} = useContext(CardContext)
@@ -8,11 +8,12 @@ const Card = () => {
     return(
         <StyleDiv>
             {card.map((card, index)=>{
+                return(
                 <ContainerCards key = {index}>
                     <StyledImg src = {`${imagePath}${card?.image}`}
-                    alt = {`${cars?.name}`}/>
+                    alt = {`${card?.name}`}/>
                     <TextStyle>{card?.name}</TextStyle>
-                </ContainerCards>
+                </ContainerCards>)
             })}
         </StyleDiv>
     )

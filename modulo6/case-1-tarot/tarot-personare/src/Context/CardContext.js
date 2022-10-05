@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const CardContext = createContext();
 
-const CardProvider = ([children]) => {
+const CardProvider = ({children}) => {
   const [card, setCard] = useState([]);
   const [path, setPath] = useState([]);
   const [flip, setFlip] = useState(true);
@@ -21,7 +21,6 @@ const CardProvider = ([children]) => {
     setPath(res.data);
   };
   const handleFlip = async () => {
-    const res = await axios.get("/tarot.json");
     setFlip(!flip);
   };
   const imagePath = path.imagesUrl;

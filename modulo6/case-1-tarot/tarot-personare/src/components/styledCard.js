@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import image from '../assets/tarot-back.png'
 
 export const StyleDiv = styled.div`
 display: flex;
@@ -6,7 +7,6 @@ justify-content: center;
 flex-wrap: wrap;
 width: auto;
 `
-
 
 export const ContainerCards = styled.div`
 display: flex;
@@ -19,12 +19,11 @@ height: 400px;
 border-radius: 30px;
 `
 
-
 export const StyledImg = styled.img`
 padding-top:15px
 `
 
-export const TextStyle = `styled.h4
+export const TextStyle = styled.h4`
 font-style: italic;
 color: whitesmoke;
 `
