@@ -12,7 +12,7 @@ export class OrderController {
 
     public createOrder = async (req: Request, res: Response) => {
         try {
-            const input:IcreateOrderInputDTO ={
+            const input: IcreateOrderInputDTO = {
                 pizzas:req.body.pizzas
             }
             
@@ -23,7 +23,7 @@ export class OrderController {
             if (error instanceof BaseError) {
                 return res.status(error.statusCode).send({ message: error.message })
             }
-            res.status(500).send({ message: "Erro inesperado ao criar pizzas" })
+            res.status(500).send({ message: "Erro inesperado ao criar pedido" })
         }
     }
     public getOrders = async(req:Request, res:Response) =>{

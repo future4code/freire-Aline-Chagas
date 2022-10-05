@@ -15,7 +15,7 @@ export class OrderBusiness {
 
         const pizzasInput = input.pizzas
 
-        if(pizzasInput.length<=0){
+        if(pizzasInput.length <= 0){
             throw new ParamsError("Pedido vazio!")
         }
 
@@ -45,7 +45,6 @@ export class OrderBusiness {
             const orderItem:IOrderItemDB ={
                 id:this.idGenerator.generate(),
                 pizza_name:pizza.name,
-                price:pizza.price,
                 quantity:pizza.quantity,
                 order_id:orderId
             }

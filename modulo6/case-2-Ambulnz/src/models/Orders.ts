@@ -6,7 +6,6 @@ id:string
 export interface IOrderItemDB {
     id:string,
     pizza_name:string,
-    price:number,
     quantity:number,
     order_id:string
 }

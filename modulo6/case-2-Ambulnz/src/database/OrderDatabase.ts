@@ -1,5 +1,5 @@
 
-import { IGetOrdersOutputDTO, IOrderDB, IOrderItemDB } from "../models/Orders";
+import {  IOrderDB, IOrderItemDB } from "../models/Orders";
 import { BaseDatabase } from "./BaseDatabase";
 import { PizzaDatabase } from "./PizzaDatabase";
 
@@ -35,8 +35,7 @@ export class OrderDatabase extends BaseDatabase{
         await BaseDatabase
         .connection(OrderDatabase.TABLE_ORDERS)
         .select()
-        
-
+    
         return result
     }
 
