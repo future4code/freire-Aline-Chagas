@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 
 import { pingRouter } from './router/pingRouter'
 import { pizzaRouter } from './router/pizzaRouter'
+import { orderRouter } from './router/orderRouter'
 
 dotenv.config()
 
@@ -17,3 +18,4 @@ app.listen(process.env.PORT || 3003, () => {
 
 app.use("/api/ping", pingRouter)
 app.use("/api/pizzas", pizzaRouter)
+app.use("/api/orders", orderRouter)

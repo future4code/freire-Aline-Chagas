@@ -1,30 +1,52 @@
-export interface IOrdersDB {
+export interface IOrderDB {
 id:string
 
 }
 
-export interface IOrderItemsDB {
+export interface IOrderItemDB {
     id:string,
     pizza_name:string,
-    quantity:string,
+    price:number,
+    quantity:number,
     order_id:string
 }
 
 export interface IOrderItem {
     id:string,
     pizza_name:string,
-    quantity:string,
+    price:number
+    quantity:number,
     order_id:string
 }
 
-
+export interface IOrderResume {
+    id:string,
+    pizzas:{
+        name:string,
+        quantity:number,
+        price:number
+    }[],
+    total: number
+}
 export class Order{
+
+    private total:number = 0
+
     constructor(
         private id: string,
         private orderItems: IOrderItem[]
-    ) {}
+    ) {
+        this.total = this.calculateTotal()
+    }
 
-  
+    private calculateTotal = () => {
+        const total = this.orderItems.reduce(
+            (acc, pizza) => acc + (pizza.price *pizza.quantity),
+            0
+        )
+        return total
+    }
+
     public getId = () => {
         return this.id
     }
@@ -44,4 +66,25 @@ export class Order{
     public removeOrderItem = (idToRemove: string) => {
         return this.orderItems.filter(orderItem => orderItem.id !== idToRemove)
     }
+    public getTotal = () => {
+        return this.total
+    }
+}
+
+export interface IcreateOrderInputDTO {
+
+    pizzas: {
+        name:string,
+        quantity:number
+    }[]
+}
+
+export interface ICreateOrderOutputDTO {
+    message: string,
+    order:IOrderResume
+
+}
+
+export interface IGetOrdersOutputDTO{
+    orders:IOrderResume[]
 }

@@ -106,14 +106,14 @@ INSERT INTO Amb_Orders VALUES (
 );
 
 INSERT INTO Amb_Order_Items VALUES (
-	"pedido-1",
+	"item-1",
     "Margherita",
     2,
     "mesa-1"
 );
 
 INSERT INTO Amb_Order_Items VALUES (
-	"pedido-2",
+	"item-2",
     "Bufala",
     1,
     "mesa-1"
