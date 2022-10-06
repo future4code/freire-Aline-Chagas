@@ -60,10 +60,13 @@ export class Order{
 
     public addOrderItem = (newOrderItem: IOrderItem) => {
         this.orderItems.push(newOrderItem)
+        this.total = this.calculateTotal()
     }
 
     public removeOrderItem = (idToRemove: string) => {
-        return this.orderItems.filter(orderItem => orderItem.id !== idToRemove)
+         this.orderItems.filter(orderItem => orderItem.id !== idToRemove)
+        this.total = this.calculateTotal()
+
     }
     public getTotal = () => {
         return this.total
