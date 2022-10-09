@@ -28,14 +28,14 @@ export class OrderDatabase extends BaseDatabase{
         .select("price")
         .where({name:pizzaName})
 
-        return result[0] as number
+        return result[0].price as number
     }
     public getOrders = async():Promise<IOrderDB[]> =>{
         const result:IOrderDB[] = 
         await BaseDatabase
         .connection(OrderDatabase.TABLE_ORDERS)
         .select()
-    
+        
         return result
     }
 
@@ -45,6 +45,7 @@ export class OrderDatabase extends BaseDatabase{
      .select()
      .where({order_id: orderId}) 
 
+     
     return result
     }
 
