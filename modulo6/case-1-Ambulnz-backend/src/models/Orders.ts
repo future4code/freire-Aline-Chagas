@@ -33,7 +33,7 @@ export class Order{
 
     constructor(
         private id: string,
-        private orderItems: IOrderItem[]
+        private orderItems: IOrderItem[],
     ) {
         this.total = this.calculateTotal()
     }
@@ -56,6 +56,7 @@ export class Order{
 
     public setOrderItems = (newOrderItems: IOrderItem[]) => {
         this.orderItems = newOrderItems
+        this.total = this.calculateTotal()
     }
 
     public addOrderItem = (newOrderItem: IOrderItem) => {
@@ -64,7 +65,7 @@ export class Order{
     }
 
     public removeOrderItem = (idToRemove: string) => {
-         this.orderItems.filter(orderItem => orderItem.id !== idToRemove)
+        this.orderItems = this.orderItems.filter(orderItem => orderItem.id !== idToRemove)
         this.total = this.calculateTotal()
 
     }
@@ -73,7 +74,7 @@ export class Order{
     }
 }
 
-export interface IcreateOrderInputDTO {
+export interface ICreateOrderInputDTO {
 
     pizzas: {
         name:string,

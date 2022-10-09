@@ -46,7 +46,7 @@ function OrderSuccessPopup(props) {
           { order.pizzas.map((pizza) => (
               <p key={pizza.name}>
                   Pizza {pizza.name} {" "}
-                  - {pizza.price.toLocaleString(
+                  - {pizza.price.price.toLocaleString(
                       'pt-br',
                       { style: 'currency', currency: 'USD' }
                   )}

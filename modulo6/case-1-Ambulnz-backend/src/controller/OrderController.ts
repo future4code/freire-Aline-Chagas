@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { OrderBusiness } from "../business/OrderBusiness";
 import { BaseError } from "../errors/BaseError";
-import { IcreateOrderInputDTO } from "../models/Orders";
+import { ICreateOrderInputDTO } from "../models/Orders";
 
 
 
@@ -12,7 +12,7 @@ export class OrderController {
 
     public createOrder = async (req: Request, res: Response) => {
         try {
-            const input: IcreateOrderInputDTO = {
+            const input: ICreateOrderInputDTO = {
                 pizzas:req.body.pizzas
             }
             
