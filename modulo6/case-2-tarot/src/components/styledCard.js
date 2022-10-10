@@ -11,7 +11,7 @@ export const Container = styled.main`
 export const ContainerCards = styled.article`
   width: 200px;
   height: 400px;
-  margin:5px;
+  margin-inline:-50px;
   perspective: 600px;
   .is-flipped {
   // transform: rotateY(180deg)

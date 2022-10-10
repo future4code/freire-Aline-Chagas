@@ -1,5 +1,6 @@
 
 import GlobalProvider from './Context/CardContext';
+import './styles/globals.css';
 import Card from './components/Cards'
 
 
