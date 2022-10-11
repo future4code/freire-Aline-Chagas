@@ -13,21 +13,34 @@ const CardProvider = ({children}) => {
     getCard();
     getPaths();
   }, []);
+  // 
+
+  const shuffleCard = (cards) => {
+
+   let shuffled = cards
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value)
+
+    return shuffled
+  }
+
   const getCard = async () => {
     const res = await axios.get("/tarot.json");
-    setCard(res.data.cards);
+
+    const sortedCard =  shuffleCard(res.data.cards)
+    setCard(sortedCard);
   };
+
   const getPaths = async () => {
     const res = await axios.get("/tarot.json");
     setPath(res.data);
   };
+
   const handleFlip = async () => {
     setFlip(!flip);
   };
-  // const shuffleCards = async () >{
-    
 
-  // }
   const imagePath = path.imagesUrl;
   const backCard = imageBackCard;
   return (
