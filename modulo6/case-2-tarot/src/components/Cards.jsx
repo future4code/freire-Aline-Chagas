@@ -1,18 +1,24 @@
+import { useState } from "react";
 import { useContext } from "react"
 import {CardContext} from"../Context/CardContext"
+import PopUp from "./PopUp";
 import { ContainerCards, Container, FlipCard, FaceCard, BackCard, TextStyle } from "./styledCard"
 
 const Card = () => {
-    const {card, backCard, imagePath, flip} = useContext(CardContext)
+    const {card, backCard, imagePath} = useContext(CardContext)
+    const [popUp, setPopUp] = useState({
+      isActive:false,
+      see:null
+    })
 
     return(
+      
         <Container>
-
             {card.map((card, index)=>{
                 return(
                 <ContainerCards key = {index}>
 
-                   <FlipCard className={ `card ${flip ? "is-flipped":""}`}>
+                   <FlipCard onClick={()=>{setPopUp({isActive:true, see:card})}} key={card.name}>
 
                     <FaceCard className="cardFaceFront">
                     <img
@@ -34,6 +40,7 @@ const Card = () => {
               
             );
           })}
+          {popUp.isActive && <PopUp card={popUp.see} key= {card.name}/>}
         </Container>
       );
     };

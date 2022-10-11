@@ -7,13 +7,12 @@ export const CardContext = createContext();
 const CardProvider = ({children}) => {
   const [card, setCard] = useState([]);
   const [path, setPath] = useState([]);
-  const [flip, setFlip] = useState(true);
-
+  
   useEffect(() => {
     getCard();
     getPaths();
   }, []);
-  // 
+
 
   const shuffleCard = (cards) => {
 
@@ -31,21 +30,17 @@ const CardProvider = ({children}) => {
     const sortedCard =  shuffleCard(res.data.cards)
     setCard(sortedCard);
   };
-
+  
   const getPaths = async () => {
     const res = await axios.get("/tarot.json");
     setPath(res.data);
-  };
-
-  const handleFlip = async () => {
-    setFlip(!flip);
   };
 
   const imagePath = path.imagesUrl;
   const backCard = imageBackCard;
   return (
     <CardContext.Provider
-      value={{ card, path, imagePath, backCard, flip, handleFlip }}
+      value={{ card, path, imagePath, backCard }}
     >
       {children}
     </CardContext.Provider>

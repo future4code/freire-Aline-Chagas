@@ -14,7 +14,6 @@
 
 # 🗂 Estrutura do Projeto 
 
-### 🎥 [Video sobre Estrura de Projeto](https://www.youtube.com/watch?v=X2RKRKdqqwM&list=LL&index=11)
 
 - src : Pasta principal onde fica toda esturutura
 - components: Reutilizáveis
@@ -30,7 +29,6 @@
 
 # 📂 Oque tem dentro das pastas
 
-- BASE_URL.JS : url principal para usar com axios 
 - useContext.js : state global para ser usado em toda aplicação 
 
    #### - 🎥 [Como criar e usar UseContext](https://www.youtube.com/watch?v=jo-IV8i5Gdk&list=LL&index=7)

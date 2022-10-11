@@ -4,8 +4,8 @@ import './styles/globals.css';
 import Card from './components/Cards'
 
 
-function App() {
 
+function App() {
 
   return (
     <GlobalProvider >
