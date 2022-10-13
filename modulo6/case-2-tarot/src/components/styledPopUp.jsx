@@ -1,21 +1,23 @@
 import styled from "styled-components";
+import button from "../assets/VOLTAR.png"
 
 export const PopUpContainer =styled.div`
-width: 300px;
+width: 280px;
     height: 70px;
     position: fixed;
-    top: 250px;
-    left: 250px;
+    top: 100px;
+    left: 400px;
     z-index: 1000px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
+    text-align: center;
     `
     
     export const PopUpStyle = styled.div`
     position: absolute;
-    background-color: black;
-    width: 600px;
+    background-color: #000000dd;
+    width: 500px;
     min-height: 10px;
     padding:30px;
     border-radius: 30px;
@@ -31,8 +33,15 @@ width: 300px;
     color:white;  
     height: 250px;
        }
-
-
+       
+      }
+      h2{
+        color: #fff;
+      }
+      button{
+        background: none;
+        border: none;
+        cursor: pointer;
     }
     `
   

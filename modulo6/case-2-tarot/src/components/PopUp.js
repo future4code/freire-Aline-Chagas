@@ -1,6 +1,7 @@
 import { PopUpContainer, PopUpStyle } from "./styledPopUp"
 import { useContext } from "react"
 import { CardContext } from "../Context/CardContext"
+import voltar from "../assets/VOLTAR.png"
 
 const  PopUp = (props) =>{
 
@@ -21,7 +22,7 @@ const {imagePath} = useContext(CardContext)
             
         </div>
             <button onClick={() => window.location.reload(true)}>
-            voltar
+            <img src={voltar}/>
         </button>
     </PopUpStyle>
  </PopUpContainer>
