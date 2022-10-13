@@ -1,39 +1,73 @@
 
+
 <h1 align="center">
-<img width=400 src="https://user-images.githubusercontent.com/60453269/187979107-d430477a-81f2-426b-8a54-37a53099211f.png">
+<img width=800 src="https://user-images.githubusercontent.com/104767043/195661992-3c91d674-2d73-4c87-9463-20811f6a2b28.png">
 </h1>
 
+<p align="center">
+  <a href="#Tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Instalação">Instalação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Imagens">Imagens</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+ 
+</p>
+
 <br/>
-<h1 align="center">
 
-</h1> 
+<h3 align="center">
+  🔊 Ative o Som Para Ter Uma Experiência Mais Agradável 😁 
+</h3>
 
+<br/>
+
+https://user-images.githubusercontent.com/104767043/195670021-0dec655d-56a2-4406-98fb-642a658f43ec.mp4
 
 
 <br/>
 
-# 🗂 Estrutura do Projeto 
+<a id="Tecnologias"></a>
+## 🚀 Tecnologias 
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- HTML, CSS, Javascript
+- React.js
+- Styled Components
 
 
-- src : Pasta principal onde fica toda esturutura
-- components: Reutilizáveis
-- assets: imagens utilizadas no projeto
-- constants: URLs, cores
-- global : Utilizado em toda parte do projeto
-- services: Integrações
-- styles:  Estilização em css
+<a id="Projeto"></a>
+## 💻 Projeto
 
-![image](https://user-images.githubusercontent.com/60453269/187975792-008c1443-4f79-40d9-9c46-952d922aec5e.png)
-
-# 📂 Oque tem dentro das pastas
-
-- CardContext.js : state global para ser usado em toda aplicação 
-
-   #### - 🎥 [Como criar e usar UseContext](https://www.youtube.com/watch?v=jo-IV8i5Gdk&list=LL&index=7)
-   
-
-- app.js : tem que ter para a aplicação em React funcionar
+Esta aplicação consiste em uma plataforma que disponibiliza ao usuário a possibilidade de tirar uma carta de tarot. As cartas possuem significados reais e aplicáveis à questão intencionada pelo usuário
 
 
+## Link vercel - [Clique Aqui -> Flash Tarot](https://flashtarot.vercel.app/)
 
-![image](https://user-images.githubusercontent.com/60453269/187919371-f502d2f6-9f48-4c72-b9bb-136f425ebe2e.png)
+<a id="Instalação"></a>
+## 👨‍💻 Instalação
+
+1. Faça o dowload e extração do projeto;
+2. Abra um terminal ([Git Bash](https://git-scm.com/) é o recomendado);
+3. Navegue até a pasta do projeto pelo seu terminal;
+4. Execute, dentro dela, o comando **npm install**;
+5. Quando acabar, rode o comando **npm run start**;
+
+### Imagens
+
+
+<a id="Imagens"></a>
+## 🖼️ Imagens
+ HomePage | Detalhes |
+|---|---|
+![HomePage](https://user-images.githubusercontent.com/104767043/195670404-bcd2ce38-3b00-4ded-9ff3-90b349bcd466.png) | ![Detalhes](https://user-images.githubusercontent.com/104767043/195670550-95504642-9586-4dce-aa82-c920766206c0.png)
+
+O que funciona:
+- Home
+ - PopUp de detalhes
+
+
+<h1 align="center"> 👋 Até a próxima <br/><br/>
+</h1>
+
+
+
