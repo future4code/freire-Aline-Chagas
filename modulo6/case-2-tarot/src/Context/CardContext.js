@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext } from "react";
-import imageBackCard from "../assets/backtarot.png"
+import imageBackCard from "../assets/backcard.png"
 import axios from "axios";
 
 export const CardContext = createContext();

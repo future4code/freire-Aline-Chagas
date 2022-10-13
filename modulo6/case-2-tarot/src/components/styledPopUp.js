@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const PopUpContainer =styled.div`
 width: 300px;
-    height: 80px;
-    background: rgba(0, 0, 0, 0.5);
+    height: 70px;
     position: fixed;
     top: 250px;
     left: 250px;
@@ -15,11 +14,25 @@ width: 300px;
     
     export const PopUpStyle = styled.div`
     position: absolute;
-    background: white;
-    width: 400px;
+    background-color: black;
+    width: 600px;
     min-height: 10px;
-    padding:50px;
+    padding:30px;
+    border-radius: 30px;
     img {
-      size: 5%;
+    margin:5px;
+    width: 120px;
+    height: 70%;
+    }
+    .modal{
+       display: flex;
+       
+       p{ 
+    color:white;  
+    height: 250px;
+       }
+
+
     }
     `
+  

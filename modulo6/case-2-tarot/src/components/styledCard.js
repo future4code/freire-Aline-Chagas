@@ -3,15 +3,14 @@ import styled from "styled-components";
 
 export const Container = styled.main`
  align-items: center;
- padding: 45px;
- margin: 45px;
+
     justify-content: center;
     width: 86%;
     display: grid;
     grid-template-columns: repeat(40, 30px);
     grid-template-rows: 1fr 1fr;
     grid-row-gap: 20px;
-    padding-left: 250px;
+    padding-left: 120px;
     @media (max-width: 500px) {
         overflow-x: scroll;
         margin: 0 auto;
@@ -20,22 +19,15 @@ export const Container = styled.main`
         padding: 0 15px 0 15px;
     }
 `
-export const Header = styled.div`
-width: 50px;
-background-color: rebeccapurple;
-`
 
 export const ContainerCards = styled.article`
   width: 100px;
   height: 205px;
   margin-inline:-70px;
-  .is-flipped {
-  // transform: rotateY(180deg)
-  }
-
+  
   .cardFaceFront {
    background-color:black; 
-   background-size: 400px 200px;
+   background-size: 600px 300px;
    transform: rotateY( 180deg ); 
     flex-direction: column;
     border-radius: 13px;
@@ -72,7 +64,7 @@ export const FaceCard = styled.section`
 position: absolute;
 height: 100%;
 width: 100%;
-/* backface-visibility:hidden; */`
+`
 
 export const BackCard = styled.section`
 position: absolute;

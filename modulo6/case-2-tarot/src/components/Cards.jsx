@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useContext } from "react"
 import {CardContext} from"../Context/CardContext"
 import PopUp from "./PopUp";
-import { ContainerCards, Container, FlipCard, FaceCard, BackCard, TextStyle } from "./styledCard"
+import { ContainerCards, Container, FlipCard, FaceCard, BackCard } from "./styledCard";
+
 
 const Card = () => {
     const {card, backCard, imagePath} = useContext(CardContext)
@@ -12,8 +13,7 @@ const Card = () => {
     })
 
     return(
-      
-        <Container>
+      <Container>
             {card.map((card, index)=>{
                 return(
                 <ContainerCards key = {index}>
@@ -25,7 +25,7 @@ const Card = () => {
                     src={`${imagePath}${card?.image}`}
                     alt = {`${card?.name}`}
                     />
-                    <TextStyle>{card?.name}</TextStyle>
+                
                     </FaceCard>
 
                     <BackCard className="cardFaceBack">

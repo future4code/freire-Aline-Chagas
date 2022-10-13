@@ -13,16 +13,16 @@ const {imagePath} = useContext(CardContext)
     <PopUpStyle>
         <h2>{name}</h2>
        
-        <div>
+        <div className="modal">
         <img src={`${imagePath}${image}`} alt={name} />
         <p>
               {description}
             </p>
+            
+        </div>
             <button onClick={() => window.location.reload(true)}>
             voltar
         </button>
-            
-        </div>
     </PopUpStyle>
  </PopUpContainer>
  </>
