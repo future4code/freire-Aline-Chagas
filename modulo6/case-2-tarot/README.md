@@ -5,7 +5,7 @@
 
 <br/>
 <h1 align="center">
-      🚩 Iniciando Projeto React.js 
+
 </h1> 
 
 
@@ -17,11 +17,9 @@
 
 - src : Pasta principal onde fica toda esturutura
 - components: Reutilizáveis
+- assets: imagens utilizadas no projeto
 - constants: URLs, cores
 - global : Utilizado em toda parte do projeto
-- hooks : Recursos de state e ciclo de vida 
-- pages: Telas do seu app
-- rotes : Sistema de rotas
 - services: Integrações
 - styles:  Estilização em css
 
@@ -29,15 +27,13 @@
 
 # 📂 Oque tem dentro das pastas
 
-- useContext.js : state global para ser usado em toda aplicação 
+- CardContext.js : state global para ser usado em toda aplicação 
 
    #### - 🎥 [Como criar e usar UseContext](https://www.youtube.com/watch?v=jo-IV8i5Gdk&list=LL&index=7)
    
-- useForm.js : useform pronto para ser usado em qualquer projeto 
-   #### - 🎥 [Como criar e usar useForm](https://www.youtube.com/watch?v=8Kn-Xd8mESc)
+
 - app.js : tem que ter para a aplicação em React funcionar
-- /routes : Rotas para mudar de pagina em React
-- /services index.js : requisições feita por axios 
-- /styles globals.css Estilização em css
+
+
 
 ![image](https://user-images.githubusercontent.com/60453269/187919371-f502d2f6-9f48-4c72-b9bb-136f425ebe2e.png)
