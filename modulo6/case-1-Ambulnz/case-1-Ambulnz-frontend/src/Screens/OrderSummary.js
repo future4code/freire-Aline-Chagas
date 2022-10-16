@@ -1,15 +1,6 @@
-import styled from "styled-components"
+import { ContainerSection } from "./styledOrder"
 import OrderItemCard from "../components/OrderItemCard"
 
-export const ContainerSection = styled.section`
-    width: 30em;
-    border: 1px solid black;
-
-    h1 {
-        font-size: 1.5em;
-        text-align: center;
-    }
-`
 
 function OrderSummary(props) {
     const { cart, removeFromCart, total, confirmOrder } = props
